@@ -1,0 +1,24 @@
+package sistemaPagamentoTransporte;
+
+import java.util.*;
+
+public class OperadorSistema extends Funcionario {
+	
+//****************************************** ATRIBUTOS ******************************************//
+	
+	
+//****************************************** CONSTRUTORES ******************************************//
+	
+
+//*************************************** SETTERS & GETTERS ***************************************//
+	
+
+//******************************************** MÉTODOS ********************************************//
+
+	public void criaInfraestrutura() {
+		//*********** VARIAÁVEIS LOCAIS ***********//
+		String local;
+		ArrayList<Integer> linhasAtendidas
+	}
+	
+}

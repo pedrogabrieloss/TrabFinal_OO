@@ -1,0 +1,31 @@
+package sistemaPagamentoTransporte;
+
+import java.util.*;
+
+public class OperadorSistema extends Funcionario {
+	
+//****************************************** ATRIBUTOS ******************************************//
+	
+	
+//****************************************** CONSTRUTORES ******************************************//
+	
+
+//*************************************** SETTERS & GETTERS ***************************************//
+	
+
+//******************************************** MÉTODOS ********************************************//
+
+	public void criaInfraestrutura() {
+		//*********** VARIÁVEIS LOCAIS ***********//
+		String local, tipoVeiculosAtendidos;
+		ArrayList<Integer> linhasAtendidas = new ArrayList<Integer>();
+		int idInfraestrutura, qntdPassageiros;
+		
+		//*********** XXXXXXXXXXXXXXX ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Digite o local da Infraestrutura.")
+	}
+	
+}
