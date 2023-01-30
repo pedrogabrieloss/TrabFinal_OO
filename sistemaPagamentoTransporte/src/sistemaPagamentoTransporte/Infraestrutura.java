@@ -8,7 +8,7 @@ public class Infraestrutura {
 	
 	private String local, tipoVeiculosAtendidos; 
 	private ArrayList<Integer> linhasAtendidas;
-	private int idInfraestrutura, qntdPassageiros;
+	private int idInfraestrutura;
 	
 //****************************************** CONSTRUTORES ******************************************//
 	
@@ -17,9 +17,7 @@ public class Infraestrutura {
 		this.local = l;
 		this.tipoVeiculosAtendidos = tV;
 		this.linhasAtendidas = lA;
-		this.idInfraestrutura = idInfra;
-		this.qntdPassageiros = qntdP;
-		
+		this.idInfraestrutura = idInfra;		
 	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
@@ -54,14 +52,6 @@ public class Infraestrutura {
 
 	public void setIdInfraestrutura(int idInfraestrutura) {
 		this.idInfraestrutura = idInfraestrutura;
-	}
-	
-	public int getQntdPassageiros() {
-		return qntdPassageiros;
-	}
-
-	public void setQntdPassageiros(int qntdPassageiros) {
-		this.qntdPassageiros = qntdPassageiros;
 	}
 
 //******************************************** MÉTODOS ********************************************//	
