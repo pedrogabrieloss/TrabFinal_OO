@@ -14911,7 +14911,7 @@
 											"top": 149,
 											"width": 223,
 											"height": 13,
-											"text": "+alterarSaldo()",
+											"text": "+addSaldo()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -16917,7 +16917,7 @@
 											"top": 85,
 											"width": 151,
 											"height": 13,
-											"text": "+endereço: Endereço",
+											"text": "-endereço: Endereço",
 											"horizontalAlignment": 0
 										},
 										{
@@ -16934,7 +16934,7 @@
 											"top": 100,
 											"width": 151,
 											"height": 13,
-											"text": "+contato: String",
+											"text": "-contato: Double",
 											"horizontalAlignment": 0
 										},
 										{
@@ -16951,7 +16951,7 @@
 											"top": 115,
 											"width": 151,
 											"height": 13,
-											"text": "+email: String",
+											"text": "-email: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -16968,7 +16968,7 @@
 											"top": 130,
 											"width": 151,
 											"height": 13,
-											"text": "+status: String",
+											"text": "-status: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -16985,7 +16985,7 @@
 											"top": 145,
 											"width": 151,
 											"height": 13,
-											"text": "+nome: String",
+											"text": "-nome: String",
 											"horizontalAlignment": 0
 										}
 									],
