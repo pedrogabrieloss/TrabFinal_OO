@@ -69,6 +69,37 @@ public class OperadorSistema extends Funcionario {
 		//Excluir ela do banco de dados
 	}
 	
+	public void criaEmpresa() {
+		//************************ VARIÁVEIS LOCAIS ************************//
+		String nome, cnpj;
+		
+		//*********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o nome da Empresa.%n");
+		nome = input.nextLine();
+		
+		System.out.printf("%nDigite o CNPJ da Empresa.%n");
+		cnpj = input.nextLine();
+		
+		Empresa XX = new Empresa(nome, cnpj);
+	}
+	
+	public void descadastraEmpresa() {
+		//************************ VARIÁVEIS LOCAIS ************************//
+		String cnpj;
+		
+		//*********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o CNPJ da Empresa que deseja descadastrar.%n");
+		cnpj = input.nextLine();
+		
+		// Procurar nas empresas pelo CNPJ e excluir
+	}
+	
 	public int verificaQntdUsuarios() {
 		
 		//************************ VARIÁVEIS LOCAIS ************************//
@@ -140,7 +171,94 @@ public class OperadorSistema extends Funcionario {
 			escolha = input.nextLine();
 			
 		} while (escolha.equals("S") || escolha.equals("s"));
+	}
+	
+	public void cadastraUsuario() {
 		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		String id, email, nome;
+		double contato;
+//		private Date dataNascimento;
+		// Se for muito complicado manipular as variáveis com Date, usar int e quebrar em dd, mm e ano.
 		
+		//*********** EXECUÇÃO ***********//
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nInsira o CPF do novo usuário.%n");
+		id = input.nextLine();
+		
+		//System.out.printf("%nInsira a data de nascimento do usuário.%n");
+		//dataNascimento = ???;
+		
+		System.out.printf("%nInsira o nome do novo usuário.%n");
+		nome = input.nextLine();
+		
+		System.out.printf("%nInsira o e-mail do novo usuário.%n");
+		email = input.nextLine();
+		
+		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário.%n");
+		contato = input.nextDouble();
+		
+		Usuario XX = new Usuario(id/*, dataNascimento*/, nome, email, contato);
+		
+	}
+	
+	public void criaBilheteUnico() {
+		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		String tipo, status;
+		double codigo,saldo;
+		
+		//*********** EXECUÇÃO ***********//
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nInsira o tipo do Bilhete Unico a ser criado.%n"); // Talvez usar int e fazer essa pergunta como múltipla escolha
+		tipo = input.nextLine();
+		
+		System.out.printf("%nInsira o codigo do Bilhete Unico.%n");
+		codigo = input.nextDouble();
+		
+		status = "Ativo";
+		
+		System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
+		saldo = input.nextDouble();
+		
+		BilheteUnico XX = new BilheteUnico(tipo, codigo, status, saldo);
+		
+	}
+	
+	public void cancelaBilheteUnico() {
+		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		double codigo;
+		
+		//*********** EXECUÇÃO ***********//
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nInsira o codigo do Bilhete Unico a ser cancelado.%n");
+		codigo = input.nextDouble();
+		
+		// Procura e seleciona o bilhete unico com o código informado
+		
+		BilheteUnicoXX.setStatus("Bloqueado");
+	}
+	
+	public void addSaldo() {
+		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		double codigo, valor;
+		
+		//*********** EXECUÇÃO ***********//
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nInsira o codigo do Bilhete.%n");
+		codigo = input.nextDouble();
+		
+		System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
+		valor = input.nextDouble();
+		
+		// Procura e seleciona o bilhete unico com o código informado
+		
+		BilheteUnicoXX.setSaldo(valor); //LEMBRAR QUE NA CLASSE TEM QUE SER SALDO+VALOR QUE ENTRAR
 	}
 }
