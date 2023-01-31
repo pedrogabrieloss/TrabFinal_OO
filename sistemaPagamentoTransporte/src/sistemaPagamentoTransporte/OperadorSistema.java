@@ -15,7 +15,7 @@ public class OperadorSistema extends Funcionario {
 
 //******************************************** MÉTODOS ********************************************//
 
-	public void criaInfraestrutura() {
+	public Infraestrutura criaInfraestrutura() {
 		//************************ VARIÁVEIS LOCAIS ************************//
 		String local, tipoVeiculosAtendidos, escolha;
 		ArrayList<Integer> linhasAtendidas = new ArrayList<Integer>();
@@ -53,23 +53,33 @@ public class OperadorSistema extends Funcionario {
 		
 		//*********** CRIAR UMA NOVA INFRAESTRUTURA ***********//
 		
-		Infraestrutura XX = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura, qntdPassageiros);
-		//Como nomear a nova Infraestrutura para que eu possa criar várias com esse método?
-		//A intenção pe criar uma nova Infraestrutura sempre que o Op. do Sistema quiser.
+		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura, qntdPassageiros);
+		
+		return Infra;
+		
+		//blabla.add(criainfra());
 	}
+	
+	
 	
 	public void desativaInfraestrutura(int codigo) {
 		//************************ VARIÁVEIS LOCAIS ************************//
-		//??????????????????????//
+		int idInfraestrutura;
+		//String confirmacao;
 		
-		//*********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA ***********//
+		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o numero identificador da Infraestrutura a ser desativada.%n");
+		idInfraestrutura = input.nextInt();
 		
 		//Procurar a Infra pelo número do código
 		//Confirmar se deseja excluir a parada de código tal, informações tal e tal
 		//Excluir ela do banco de dados
 	}
 	
-	public void criaEmpresa() {
+	public Empresa criaEmpresa() {
 		//************************ VARIÁVEIS LOCAIS ************************//
 		String nome, cnpj;
 		
@@ -83,7 +93,9 @@ public class OperadorSistema extends Funcionario {
 		System.out.printf("%nDigite o CNPJ da Empresa.%n");
 		cnpj = input.nextLine();
 		
-		Empresa XX = new Empresa(nome, cnpj);
+		Empresa Emp = new Empresa(nome, cnpj);
+		
+		return Emp;
 	}
 	
 	public void descadastraEmpresa() {
@@ -173,7 +185,7 @@ public class OperadorSistema extends Funcionario {
 		} while (escolha.equals("S") || escolha.equals("s"));
 	}
 	
-	public void cadastraUsuario() {
+	public Usuario cadastraUsuario() {
 		
 		//************************ VARIÁVEIS LOCAIS ************************//
 		String id, email, nome;
@@ -199,11 +211,12 @@ public class OperadorSistema extends Funcionario {
 		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário.%n");
 		contato = input.nextDouble();
 		
-		Usuario XX = new Usuario(id/*, dataNascimento*/, nome, email, contato);
+		Usuario user = new Usuario(id/*, dataNascimento*/, nome, email, contato);
 		
+		return user;
 	}
 	
-	public void criaBilheteUnico() {
+	public BilheteUnico criaBilheteUnico() {
 		
 		//************************ VARIÁVEIS LOCAIS ************************//
 		String tipo, status;
@@ -223,8 +236,9 @@ public class OperadorSistema extends Funcionario {
 		System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
 		saldo = input.nextDouble();
 		
-		BilheteUnico XX = new BilheteUnico(tipo, codigo, status, saldo);
+		BilheteUnico bilhete = new BilheteUnico(tipo, codigo, status, saldo);
 		
+		return bilhete;
 	}
 	
 	public void cancelaBilheteUnico() {
@@ -260,5 +274,46 @@ public class OperadorSistema extends Funcionario {
 		// Procura e seleciona o bilhete unico com o código informado
 		
 		BilheteUnicoXX.setSaldo(valor); //LEMBRAR QUE NA CLASSE TEM QUE SER SALDO+VALOR QUE ENTRAR
+	}
+	
+	public Linha criaLinha() {
+		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		int codigo, qntdPassageiros, pontos, aux, cont;
+		String empresa;
+		ArrayList<Integer> traj = new ArrayList<Integer>();
+		double tarifa;
+		
+		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o codigo da Linha.%n");
+		codigo = input.nextInt();
+		
+		System.out.printf("%nDigite a tarifa dessa Linha.");
+		tarifa = input.nextDouble();
+		
+		input.nextLine(); // Para limpar o Scanner
+		
+		System.out.printf("%nDigite a(s) empresa(s) responsável(is) por essa Linha.%n");
+		empresa = input.nextLine();
+				
+		System.out.printf("%nQuantas Infraestruturas estão incluídas no trajeto?%n");
+		pontos = input.nextInt();
+			
+		for(cont = 0; cont <= pontos; cont++) {
+			System.out.printf("%nDigite o ID da %dª Infraestrutura.%n", cont+1);
+			aux = input.nextInt();
+			
+			traj.add(aux);
+		}
+		
+		
+		//*********** CRIAR UMA NOVA LINHA ***********//
+		
+		Linha linha = new Linha(codigo, tarifa, empresa, pontos, traj);
+		
+		return linha;
 	}
 }
