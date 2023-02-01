@@ -2,7 +2,8 @@ package sistemaPagamentoTransporte;
 
 import java.util.*;
 
-public class OperadorSistema extends Funcionario {
+//public class OperadorSistema extends Funcionario {
+public class OperadorSistema {
 	
 //****************************************** ATRIBUTOS ******************************************//
 	
