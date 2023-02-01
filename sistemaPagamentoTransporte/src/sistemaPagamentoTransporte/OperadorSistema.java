@@ -6,21 +6,40 @@ import java.util.*;
 public class OperadorSistema {
 	
 //****************************************** ATRIBUTOS ******************************************//
-	
+	int matricula;
+	String cargo;
 	
 //****************************************** CONSTRUTORES ******************************************//
-	
+	OperadorSistema(int m, String c) {
+		this.matricula = m;
+		this.cargo = c;
+	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
-	
+	public int getMatricula() {
+		return matricula;
+	}
 
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	
 //******************************************** MÉTODOS ********************************************//
 
 	public Infraestrutura criaInfraestrutura() {
+		
 		//************************ VARIÁVEIS LOCAIS ************************//
 		String local, tipoVeiculosAtendidos, escolha;
 		ArrayList<Integer> linhasAtendidas = new ArrayList<Integer>();
-		int idInfraestrutura, qntdPassageiros;
+		int idInfraestrutura;
 		
 		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
 		
@@ -34,57 +53,60 @@ public class OperadorSistema {
 		System.out.printf("%nDigite o local da Infraestrutura.%n");
 		local = input.nextLine();
 				
-		System.out.printf("%nDigite o(s) tipo(s) de veículo(s) que opera(m) nessa Infraestrutura.");
+		System.out.printf("%nDigite o(s) tipo(s) de veiculo(s) que opera(m) nessa Infraestrutura.%n");
 		tipoVeiculosAtendidos = input.nextLine();
 			
 		do {
 			
 			System.out.printf("%nDigite uma linha que opera nessa Infraestrutura.%n");
-			linhasAtendidas.add(input.nextInt()); // PODE SER QUE ISSO NÃO SEJA VÁLIDO
+			linhasAtendidas.add(input.nextInt());
 			
 			input.nextLine(); // Para limpar o Scanner
 			
-			System.out.printf("%nDeseja adicionar mais linhas que operam aqui?%n [S] Sim.%n[N] Nao.");
+			System.out.printf("%nDeseja adicionar mais linhas que operam aqui?%n[S] Sim.%n[N] Nao.%n");
 			escolha = input.nextLine();
 			
 		} while (escolha.equals("S") || escolha.equals("s"));
 		
-		System.out.printf("%nDigite a quantidade de passageiros que utilizam essa Infraestrutura.%n");
-		qntdPassageiros = input.nextInt();
-		
 		//*********** CRIAR UMA NOVA INFRAESTRUTURA ***********//
 		
-		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura, qntdPassageiros);
+		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
 		
 		return Infra;
-		
-		//blabla.add(criainfra());
+
 	}
-	
-	
-	
+
 	public void desativaInfraestrutura(int codigo) {
 		//************************ VARIÁVEIS LOCAIS ************************//
-		int idInfraestrutura;
-		//String confirmacao;
+		int idInfraestrutura, confirmacao, qntdInfraestrutura;
+		boolean busca = false;
 		
 		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.printf("%nDigite o numero identificador da Infraestrutura a ser desativada.%n");
+		//qntdInfraestrutura = infra.size();
+		
+		System.out.printf("%nDigite o codigo da Infraestrutura a ser desativada.%n");
 		idInfraestrutura = input.nextInt();
 		
 		//Procurar a Infra pelo número do código
-		//Confirmar se deseja excluir a parada de código tal, informações tal e tal
+		
+		
+		
+		
+		System.out.printf("%nDeseja realmente excluir a Infraestrutura %d?%n", idInfraestrutura);
+		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
+		System.out.printf("%n[1] Sim%n[2] Nao.%n");
+		confirmacao = input.nextInt();
 		//Excluir ela do banco de dados
 	}
 	
-	public Empresa criaEmpresa() {
-		//************************ VARIÁVEIS LOCAIS ************************//
+	/*public Empresa criaEmpresa() {
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String nome, cnpj;
 		
-		//*********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA ***********//
+		// *********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -97,13 +119,14 @@ public class OperadorSistema {
 		Empresa Emp = new Empresa(nome, cnpj);
 		
 		return Emp;
-	}
+	} /*
 	
-	public void descadastraEmpresa() {
-		//************************ VARIÁVEIS LOCAIS ************************//
+	/*public void descadastraEmpresa() {
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String cnpj;
+		int confirmacao;
 		
-		//*********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA ***********//
+		// *********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -111,14 +134,19 @@ public class OperadorSistema {
 		cnpj = input.nextLine();
 		
 		// Procurar nas empresas pelo CNPJ e excluir
+		
+		System.out.printf("%nDeseja realmente excluir a Empresa %s?%n", cnpj);
+		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
+		System.out.printf("%n[1] Sim%n[2] Nao.%n");
+		confirmacao = input.nextInt();
 	}
 	
-	public int verificaQntdUsuarios() {
+	/*public int verificaQntdUsuarios() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int abrangencia, aux, codigo, passageiros;
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -144,15 +172,15 @@ public class OperadorSistema {
 		else {
 			// Somatório do usuarios de todas as linhas. Percorrer o vetor e ir somando esse atributo
 		}
-	}
+	}/*
 	
-	public void alteraAtributoLinha() {
+	/*public void alteraAtributoLinha() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int codigo, selecao;
 		String escolha;
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
 		System.out.printf("%nQual linha você gostaria de alterar?%n");
@@ -184,17 +212,17 @@ public class OperadorSistema {
 			escolha = input.nextLine();
 			
 		} while (escolha.equals("S") || escolha.equals("s"));
-	}
+	}*/
 	
-	public Usuario cadastraUsuario() {
+	/*public Usuario cadastraUsuario() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String id, email, nome;
 		double contato;
 //		private Date dataNascimento;
 		// Se for muito complicado manipular as variáveis com Date, usar int e quebrar em dd, mm e ano.
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
 		System.out.printf("%nInsira o CPF do novo usuário.%n");
@@ -212,18 +240,18 @@ public class OperadorSistema {
 		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário.%n");
 		contato = input.nextDouble();
 		
-		Usuario user = new Usuario(id/*, dataNascimento*/, nome, email, contato);
+		Usuario user = new Usuario(id/*, dataNascimento* /, nome, email, contato);
 		
 		return user;
-	}
+	}*/
 	
-	public BilheteUnico criaBilheteUnico() {
+	/*public BilheteUnico criaBilheteUnico() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String tipo, status;
 		double codigo,saldo;
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
 		System.out.printf("%nInsira o tipo do Bilhete Unico a ser criado.%n"); // Talvez usar int e fazer essa pergunta como múltipla escolha
@@ -240,14 +268,14 @@ public class OperadorSistema {
 		BilheteUnico bilhete = new BilheteUnico(tipo, codigo, status, saldo);
 		
 		return bilhete;
-	}
+	}*/
 	
-	public void cancelaBilheteUnico() {
+	/*public void cancelaBilheteUnico() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		double codigo;
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
 		System.out.printf("%nInsira o codigo do Bilhete Unico a ser cancelado.%n");
@@ -256,14 +284,14 @@ public class OperadorSistema {
 		// Procura e seleciona o bilhete unico com o código informado
 		
 		BilheteUnicoXX.setStatus("Bloqueado");
-	}
+	}*/
 	
-	public void addSaldo() {
+	/*public void addSaldo() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		double codigo, valor;
 		
-		//*********** EXECUÇÃO ***********//
+		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
 		System.out.printf("%nInsira o codigo do Bilhete.%n");
@@ -275,17 +303,17 @@ public class OperadorSistema {
 		// Procura e seleciona o bilhete unico com o código informado
 		
 		BilheteUnicoXX.setSaldo(valor); //LEMBRAR QUE NA CLASSE TEM QUE SER SALDO+VALOR QUE ENTRAR
-	}
+	}*/
 	
-	public Linha criaLinha() {
+	/*public Linha criaLinha() {
 		
-		//************************ VARIÁVEIS LOCAIS ************************//
+		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int codigo, qntdPassageiros, pontos, aux, cont;
 		String empresa;
 		ArrayList<Integer> traj = new ArrayList<Integer>();
 		double tarifa;
 		
-		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
+		// *********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -311,10 +339,10 @@ public class OperadorSistema {
 		}
 		
 		
-		//*********** CRIAR UMA NOVA LINHA ***********//
+		// *********** CRIAR UMA NOVA LINHA *********** //
 		
 		Linha linha = new Linha(codigo, tarifa, empresa, pontos, traj);
 		
 		return linha;
-	}
+	}*/
 }

@@ -12,7 +12,7 @@ public class Infraestrutura {
 	
 //****************************************** CONSTRUTORES ******************************************//
 	
-	Infraestrutura(String l, String tV, ArrayList<Integer> lA, int idInfra, int qntdP) {
+	Infraestrutura(String l, String tV, ArrayList<Integer> lA, int idInfra) {
 		
 		this.local = l;
 		this.tipoVeiculosAtendidos = tV;
