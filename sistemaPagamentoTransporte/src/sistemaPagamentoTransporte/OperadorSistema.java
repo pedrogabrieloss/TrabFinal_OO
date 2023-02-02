@@ -68,7 +68,7 @@ public class OperadorSistema {
 			
 		} while (escolha.equals("S") || escolha.equals("s"));
 		
-		//*********** CRIAR UMA NOVA INFRAESTRUTURA ***********//
+		// Criando um objeto Infraestrutura
 		
 		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
 		
@@ -76,12 +76,12 @@ public class OperadorSistema {
 
 	}
 
-	public void desativaInfraestrutura(int codigo) {
+	public void desativaInfraestrutura() {  // COMO FAZER ESSA CLASSE ENXERGAR O ARRAYLIST INFRA, QUE ESTÁ NA MAIN?
 		//************************ VARIÁVEIS LOCAIS ************************//
-		int idInfraestrutura, confirmacao, qntdInfraestrutura;
+		int idInfraestrutura, confirmacao;
 		boolean busca = false;
 		
-		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
+		//*********** OBTER AS INFORMAÇÕES DA INFRAESTRUTURA ***********//
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -93,8 +93,6 @@ public class OperadorSistema {
 		//Procurar a Infra pelo número do código
 		
 		
-		
-		
 		System.out.printf("%nDeseja realmente excluir a Infraestrutura %d?%n", idInfraestrutura);
 		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
 		System.out.printf("%n[1] Sim%n[2] Nao.%n");
@@ -103,17 +101,20 @@ public class OperadorSistema {
 	}
 	
 	/*public Empresa criaEmpresa() {
+
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String nome, cnpj;
 		
-		// *********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA *********** //
+		// *********** OBTER AS INFORMAÇÕES DA NOVA EMPRESA *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.printf("%nDigite o nome da Empresa.%n");
+		input.nextLine(); // Para limpar o Scanner
+		
+		System.out.printf("%nDigite o nome da Empresa: ");
 		nome = input.nextLine();
 		
-		System.out.printf("%nDigite o CNPJ da Empresa.%n");
+		System.out.printf("%nDigite o CNPJ da Empresa: ");
 		cnpj = input.nextLine();
 		
 		Empresa Emp = new Empresa(nome, cnpj);
@@ -122,11 +123,12 @@ public class OperadorSistema {
 	} /*
 	
 	/*public void descadastraEmpresa() {
+
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String cnpj;
 		int confirmacao;
 		
-		// *********** CONFIRMAR INFRAESTRUTURA A SER DESATIVADA *********** //
+		// *********** CONFIRMAR EMPRESA A SER DESATIVADA *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -141,7 +143,7 @@ public class OperadorSistema {
 		confirmacao = input.nextInt();
 	}
 	
-	/*public int verificaQntdUsuarios() {
+	/*public int verificaQntdUsuarios() {    // A VERIFICAR POSTERIORMENTE
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int abrangencia, aux, codigo, passageiros;
@@ -217,7 +219,7 @@ public class OperadorSistema {
 	/*public Usuario cadastraUsuario() {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		String id, email, nome;
+		String cpf, email, nome, endereco;
 		double contato;
 //		private Date dataNascimento;
 		// Se for muito complicado manipular as variáveis com Date, usar int e quebrar em dd, mm e ano.
@@ -225,22 +227,25 @@ public class OperadorSistema {
 		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
 		
-		System.out.printf("%nInsira o CPF do novo usuário.%n");
-		id = input.nextLine();
+		System.out.printf("%nInsira o CPF do novo usuario: ");
+		cpf = input.nextLine();
 		
-		//System.out.printf("%nInsira a data de nascimento do usuário.%n");
+		//System.out.printf("%nInsira a data de nascimento do usuario: ");
 		//dataNascimento = ???;
 		
-		System.out.printf("%nInsira o nome do novo usuário.%n");
+		System.out.printf("%nInsira o nome do novo usuario: ");
 		nome = input.nextLine();
 		
-		System.out.printf("%nInsira o e-mail do novo usuário.%n");
+		System.out.printf("%nInsira agora o endereco: ");
+		endereco = input.nextLine();
+		
+		System.out.printf("%nInsira o e-mail do novo usuario: ");
 		email = input.nextLine();
 		
-		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário.%n");
+		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário: ");
 		contato = input.nextDouble();
 		
-		Usuario user = new Usuario(id/*, dataNascimento* /, nome, email, contato);
+		Usuario user = new Usuario(cpf/*, dataNascimento* /, nome, endereco, email, contato);
 		
 		return user;
 	}*/
@@ -249,7 +254,7 @@ public class OperadorSistema {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String tipo, status;
-		double codigo,saldo;
+		double codigo, saldo;
 		
 		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
@@ -334,6 +339,8 @@ public class OperadorSistema {
 		for(cont = 0; cont <= pontos; cont++) {
 			System.out.printf("%nDigite o ID da %dª Infraestrutura.%n", cont+1);
 			aux = input.nextInt();
+			
+			// Verificar se essa Infra existe
 			
 			traj.add(aux);
 		}
