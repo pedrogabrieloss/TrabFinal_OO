@@ -76,28 +76,51 @@ public class OperadorSistema {
 
 	}
 
-	public void desativaInfraestrutura() {  // COMO FAZER ESSA CLASSE ENXERGAR O ARRAYLIST INFRA, QUE ESTÁ NA MAIN?
-		//************************ VARIÁVEIS LOCAIS ************************//
-		int idInfraestrutura, confirmacao;
-		boolean busca = false;
+	
+	public void desativaInfraestrutura(ArrayList<Infraestrutura> infra) {  // COMO FAZER ESSA CLASSE ENXERGAR O ARRAYLIST INFRA, QUE ESTÁ NA MAIN?
 		
-		//*********** OBTER AS INFORMAÇÕES DA INFRAESTRUTURA ***********//
+		//************************ VARIÁVEIS LOCAIS ************************//
+		int tamanho, i;
+		int flag = 0;
+		String confirmacao;
 		
 		Scanner input = new Scanner(System.in);
 		
-		//qntdInfraestrutura = infra.size();
+		tamanho = infra.size();
+		System.out.printf("Tamanho do vetor infra e de %d", tamanho);
 		
 		System.out.printf("%nDigite o codigo da Infraestrutura a ser desativada.%n");
-		idInfraestrutura = input.nextInt();
+		int idInfraestrutura = input.nextInt();
 		
-		//Procurar a Infra pelo número do código
+		for (i = 0; i < tamanho; i++) {			
+			if (idInfraestrutura == infra.get(i).getIdInfraestrutura()) {
+				
+				System.out.printf("Infraestrutura encontrada!%nID: %d.%n", infra.get(i).getIdInfraestrutura());
+
+				flag = 1;
+			
+				System.out.printf("Deseja realmente excluir essa Infraestrutura?%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
+						infra.get(i).getIdInfraestrutura(), infra.get(i).getLocal(), infra.get(i).getTipoVeiculosAtendidos());
+				System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(i).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
+				System.out.printf("%n[S] Sim.%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();
+				
+				if (confirmacao.equals("S") || confirmacao.equals("s")) {
+					System.out.printf("Infraestrutura %d excluida com sucesso!%n", infra.get(i).getIdInfraestrutura());
+					
+					infra.remove(i);
+				}
+				else {
+					System.out.printf("Operacao abortada!%n");
+				}
+				break;
+			}
+		}
 		
-		
-		System.out.printf("%nDeseja realmente excluir a Infraestrutura %d?%n", idInfraestrutura);
-		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
-		System.out.printf("%n[1] Sim%n[2] Nao.%n");
-		confirmacao = input.nextInt();
-		//Excluir ela do banco de dados
+		if (flag == 0)
+			System.out.printf("Infraestrutura nao encontrada!");
+
 	}
 	
 	/*public Empresa criaEmpresa() {
@@ -352,4 +375,11 @@ public class OperadorSistema {
 		
 		return linha;
 	}*/
+	
+	//public void testePassarClasse(ArrayList<Infraestrutura> inf) {
+		
+		//System.out.printf("Testando o ArrayList Infra.%nA primeira infra tem local %s. A segunda aceita %s.", inf.get(0).getLocal(),inf.get(1).getTipoVeiculosAtendidos());
+		
+	//}
+	
 }

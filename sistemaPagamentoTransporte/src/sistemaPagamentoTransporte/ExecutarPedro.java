@@ -10,12 +10,12 @@ public class ExecutarPedro {
 	
 	// ************************    ArrayLists    ************************ //
 	
-	static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>(); // Talvez vire Funcionario ou Pessoa
-	static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
-	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
-	//static ArrayList<Linha> linha = new ArrayList<Linha>();
-	//static ArrayList<Usuario> user = new ArrayList<Usuario>();
-	//static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
+	public static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>(); // Talvez vire Funcionario ou Pessoa
+	public static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
+	//public static ArrayList<Empresa> emp = new ArrayList<Empresa>();
+	//public static ArrayList<Linha> linha = new ArrayList<Linha>();
+	//public static ArrayList<Usuario> user = new ArrayList<Usuario>();
+	//public static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
 
 	public static void main(String[] args) {
 		
@@ -57,7 +57,9 @@ public class ExecutarPedro {
 		Collections.addAll(linhasAtendidas, 205, 2051);
 		Infraestrutura infra2 = new Infraestrutura("FGA", "Onibus", linhasAtendidas, 456);
 		infra.add(infra2);
+		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(1).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		linhasAtendidas.clear();
+		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(1).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		
 		Collections.addAll(linhasAtendidas, 8078, 87, 870, 8701);
 		Infraestrutura infra3 = new Infraestrutura("Galenos", "Onibus", linhasAtendidas, 789);
@@ -79,13 +81,14 @@ public class ExecutarPedro {
 		//		infra.get(0).getIdInfraestrutura(), infra.get(0).getLocal(), infra.get(0).getTipoVeiculosAtendidos());
 		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(0).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		
-		//infra.add(opSis.get(0).criaInfraestrutura());
-		
-		//infra.add(opSis.get(0).criaInfraestrutura());
-		
 		// FIM Criar uma Infra
 		
 		// INICIO Desativa Infra
+		
+		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(2).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
+
+		opSis.get(0).desativaInfraestrutura(infra);
+		
 		/*
 		int tamanho, i;
 		int flag = 0;
@@ -125,7 +128,8 @@ public class ExecutarPedro {
 		
 		if (flag == 0)
 			System.out.printf("Infraestrutura nao encontrada!");
-		*/
+			*/
+		
 		// FIM Desativa Infra
 		
 		
@@ -391,19 +395,8 @@ public class ExecutarPedro {
 
 			}*/
 		
-		String nome;
-		boolean teste;
+		// opSis.get(0).testePassarClasse(infra);
 		
-		System.out.println("Esse campo nao pode ser vazio! Por favor, insira um texto valido.");
-		nome = input.nextLine();
-		teste = nome.matches("[A-Z][a-z]{1,}");
-		
-		if(teste == true) {
-			System.out.printf("teste deu verdadeiro.%n");
-			System.out.printf("O nome %s e valido", nome);
-		}
-		else
-			System.out.printf("O nome %s e invalido", nome);
 	}
 
 }
