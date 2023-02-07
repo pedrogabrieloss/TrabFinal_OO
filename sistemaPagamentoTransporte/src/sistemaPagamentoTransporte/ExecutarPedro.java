@@ -365,6 +365,45 @@ public class ExecutarPedro {
 		
 		// FIM Criar uma Linha
 		
+		
+		// ************************    VALIDAÇÃO DE DADOS INSERIDOS PELO USUÁRIO   ************************ //
+		
+		// INICIO Não aceitar String sem texto
+		/*
+		public void setCargo(String cargo) {
+			if(cargo.equals("")) {
+				do {
+					System.out.println("Esse campo nao pode ser vazio! Por favor, insira um texto valido.");
+					cargo = input.nextLine();
+				} while(cargo.equals(""));
+			}
+			this.cargo = cargo;
+		}
+		*/
+		// FIM Não aceitar String sem texto
+		
+		
+		/*public boolean valida(Aluno aluno) {
+
+			String nome = aluno.getNome();
+
+			return nome.matches("[A-Z][a-z]{1,}");
+
+			}*/
+		
+		String nome;
+		boolean teste;
+		
+		System.out.println("Esse campo nao pode ser vazio! Por favor, insira um texto valido.");
+		nome = input.nextLine();
+		teste = nome.matches("[A-Z][a-z]{1,}");
+		
+		if(teste == true) {
+			System.out.printf("teste deu verdadeiro.%n");
+			System.out.printf("O nome %s e valido", nome);
+		}
+		else
+			System.out.printf("O nome %s e invalido", nome);
 	}
 
 }
