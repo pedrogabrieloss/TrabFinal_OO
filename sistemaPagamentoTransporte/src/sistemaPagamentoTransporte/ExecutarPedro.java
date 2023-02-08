@@ -71,34 +71,28 @@ public class ExecutarPedro {
 		
 		// ************************    Implementacao    ************************ //
 		
-		// INICIO Criar uma Infra
+//OK	// INICIO Criar uma Infra
 		
 		//infra.add(opSis.get(0).criaInfraestrutura());
-		
-		//System.out.printf("Infraestrutura criada com sucesso!%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
-		//		infra.get(0).getIdInfraestrutura(), infra.get(0).getLocal(), infra.get(0).getTipoVeiculosAtendidos());
-		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(0).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		
 		// FIM Criar uma Infra
 		
 		
-		// INICIO Desativa Infra
+//OK	// INICIO Desativa Infra
 
 		// opSis.get(0).desativaInfraestrutura(infra);
 		
 		// FIM Desativa Infra
 		
 		
-		// INICIO Criar uma Empresa
+//OK_T	// INICIO Criar uma Empresa
 		
 		//emp.add(opSis.get(1).criaEmpresa());
-		
-		//System.out.printf("Empresa cadastrada com sucesso!%nNome: %s.%nCNPJ: %s.%n", emp.get(0).getNome(), emp.get(0).getCnpj());
 		
 		// FIM Criar uma Empresa
 		
 		
-		// INICIO Descadastrar uma Empresa
+//OK_T	// INICIO Descadastrar uma Empresa
 		
 		// opSis.get(1).descadastraEmpresa(emp);
 		

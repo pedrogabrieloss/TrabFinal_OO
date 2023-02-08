@@ -70,17 +70,20 @@ public class OperadorSistema {
 		
 		// Criando um objeto Infraestrutura
 		
-		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
+		Infraestrutura infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
 		
-		return Infra;
-
+		System.out.printf("Infraestrutura criada com sucesso!%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
+				infra.getIdInfraestrutura(), infra.getLocal(), infra.getTipoVeiculosAtendidos());
+		System.out.printf("Linhas atendidas: " + Arrays.toString(infra.getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
+		
+		return infra;
 	}
 
 	
 	public void desativaInfraestrutura(ArrayList<Infraestrutura> infra) { 
 		
 		//************************ VARIÁVEIS LOCAIS ************************//
-		int i;
+		int idInfraestrutura, i;
 		int flag = 0;
 		String confirmacao;
 		
@@ -89,7 +92,7 @@ public class OperadorSistema {
 		System.out.printf("Tamanho do vetor infra e de %d", infra.size());
 		
 		System.out.printf("%nDigite o codigo da Infraestrutura a ser desativada.%n");
-		int idInfraestrutura = input.nextInt();
+		idInfraestrutura = input.nextInt();
 		
 		for (i = 0; i < infra.size(); i++) {			
 			if (idInfraestrutura == infra.get(i).getIdInfraestrutura()) {
@@ -139,9 +142,11 @@ public class OperadorSistema {
 		System.out.printf("%nDigite o CNPJ da Empresa: ");
 		cnpj = input.nextLine();
 		
-		Empresa Emp = new Empresa(nome, cnpj);
+		Empresa emp = new Empresa(nome, cnpj);
 		
-		return Emp;
+		System.out.printf("Empresa cadastrada com sucesso!%nNome: %s.%nCNPJ: %s.%n", emp.getNome(), emp.getCnpj());
+		
+		return emp;
 	} /*
 	
 	/*public void descadastraEmpresa(ArrayList<Empresa> emp) {
@@ -243,7 +248,7 @@ public class OperadorSistema {
 		String confirmacao;
 		
 		// *********** EXECUÇÃO *********** //
-		System.out.printf("Tamanho do vetor linha e de %d", linha.size());
+		System.out.printf("Tamanho do vetor Linha e de %d", linha.size());
 		
 		System.out.printf("%nDigite o codigo da Linha a ser alterada.%n");
 		codigo = input.nextInt();
@@ -287,8 +292,7 @@ public class OperadorSistema {
 					
 					input.nextLine(); // Para limpar o Scanner
 					
-					System.out.printf("%nDeseja alterar algum outro atributo?%n");
-					System.out.printf("%n[S] Sim%n[N] Nao.%n");
+					System.out.printf("%nDeseja alterar algum outro atributo?%n[S] Sim%n[N] Nao.%n");
 					confirmacao = input.nextLine();
 					
 				}while(confirmacao.equals("S") || confirmacao.equals("s"));
@@ -298,6 +302,8 @@ public class OperadorSistema {
 		if (flag == 0)
 			System.out.printf("Linha nao encontrada!");
 	}*/
+	
+	// PENSAR NO MÉTODO consultaFinanca()
 	
 	/*public Usuario cadastraUsuario() {
 		
