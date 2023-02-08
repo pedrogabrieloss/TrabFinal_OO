@@ -1,6 +1,7 @@
 package sistemaPagamentoTransporte;
 
 //import java.util.*;
+import java.time.*;
 
 public class Contrato {
 
@@ -9,18 +10,20 @@ public class Contrato {
 	private String nomeEmpresa, tipoVeiculo;
 	private int qntdVeiculos;
 	private double numContrato, valorContrato;
-//	private Date dataAssinatura, dataInicio, dataVencimento;
-// Se for muito complicado manipular as variáveis com Date, usar int e quebrar em dd, mm e ano.
-	
+	private LocalDate dataInicio, dataVencimento;
 	
 //****************************************** CONSTRUTORES ******************************************//
 	
-	Contrato(String nE, String tV, int qntdV, double numC, double vC/*, DATA*/) {
+	Contrato(String nE, String tV, int qntdV, double numC, double vC, int anos) {
 		
 		this.nomeEmpresa = nE;
 		this.tipoVeiculo =	tV;
+		this.qntdVeiculos = qntdV;
 		this.numContrato = numC;
 		this.valorContrato = vC;
+		this.dataInicio = LocalDate.now();
+		this.dataVencimento = LocalDate.now().plusYears(anos);
+		
 	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
@@ -72,6 +75,22 @@ public class Contrato {
 
 	public void setValorContrato(double valorContrato) {
 		this.valorContrato = valorContrato;
+	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataVencimento() {
+		return dataVencimento;
+	}
+
+	public void setDataVencimento(LocalDate dataVencimento) {
+		this.dataVencimento = dataVencimento;
 	}
 
 //******************************************** MÉTODOS ********************************************//

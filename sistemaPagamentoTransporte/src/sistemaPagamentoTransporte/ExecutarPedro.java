@@ -1,12 +1,12 @@
 package sistemaPagamentoTransporte;
 
 import java.util.*;
+import java.time.*;
 
 public class ExecutarPedro {
 	
 	// TENHO QUE CRIAR UM METODO "ESTABELECER CONTRATO"
 	// SE PAH, ROLA UMA COMPOSIÇÃO ENTRE EMPRESA E CONTRATO
-	// LINHA TEM QUE TER PELO MENOS 2 INFRAS. SÓ ACEITAR QUE INFRAS JÁ CADASTRADAS SEJAM ADD AO TRAJETO DAS LINHAS
 	
 	// ************************    ArrayLists    ************************ //
 	
