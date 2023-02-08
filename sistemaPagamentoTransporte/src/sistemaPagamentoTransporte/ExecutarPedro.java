@@ -10,8 +10,8 @@ public class ExecutarPedro {
 	
 	// ************************    ArrayLists    ************************ //
 	
-	public static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>(); // Talvez vire Funcionario ou Pessoa
-	public static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
+	static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>(); // Talvez vire Funcionario ou Pessoa
+	static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
 	//public static ArrayList<Empresa> emp = new ArrayList<Empresa>();
 	//public static ArrayList<Linha> linha = new ArrayList<Linha>();
 	//public static ArrayList<Usuario> user = new ArrayList<Usuario>();
@@ -57,9 +57,7 @@ public class ExecutarPedro {
 		Collections.addAll(linhasAtendidas, 205, 2051);
 		Infraestrutura infra2 = new Infraestrutura("FGA", "Onibus", linhasAtendidas, 456);
 		infra.add(infra2);
-		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(1).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		linhasAtendidas.clear();
-		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(1).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		
 		Collections.addAll(linhasAtendidas, 8078, 87, 870, 8701);
 		Infraestrutura infra3 = new Infraestrutura("Galenos", "Onibus", linhasAtendidas, 789);
@@ -83,52 +81,10 @@ public class ExecutarPedro {
 		
 		// FIM Criar uma Infra
 		
+		
 		// INICIO Desativa Infra
-		
-		//System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(2).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 
-		opSis.get(0).desativaInfraestrutura(infra);
-		
-		/*
-		int tamanho, i;
-		int flag = 0;
-		String confirmacao;
-		
-		tamanho = infra.size();
-		System.out.printf("Tamanho do vetor infra e de %d", tamanho);
-		
-		System.out.printf("%nDigite o codigo da Infraestrutura a ser desativada.%n");
-		int idInfraestrutura = input.nextInt();
-		
-		for (i = 0; i < tamanho; i++) {			
-			if (idInfraestrutura == infra.get(i).getIdInfraestrutura()) {
-				
-				System.out.printf("Infraestrutura encontrada!%nID: %d.%n", infra.get(i).getIdInfraestrutura());
-
-				flag = 1;
-			
-				System.out.printf("Deseja realmente excluir essa Infraestrutura?%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
-						infra.get(i).getIdInfraestrutura(), infra.get(i).getLocal(), infra.get(i).getTipoVeiculosAtendidos());
-				System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(i).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
-				System.out.printf("%n[S] Sim%n[N] Nao.%n");
-				input.nextLine(); // Para limpar o Scanner
-				confirmacao = input.nextLine();
-				
-				if (confirmacao.equals("S") || confirmacao.equals("s")) {
-					System.out.printf("Infraestrutura %d excluida com sucesso!%n", infra.get(i).getIdInfraestrutura());
-					
-					infra.remove(i);
-				}
-				else {
-					System.out.printf("Operacao abortada!%n");
-				}
-				break;
-			}
-		}
-		
-		if (flag == 0)
-			System.out.printf("Infraestrutura nao encontrada!");
-			*/
+		// opSis.get(0).desativaInfraestrutura(infra);
 		
 		// FIM Desativa Infra
 		
@@ -137,13 +93,16 @@ public class ExecutarPedro {
 		
 		//emp.add(opSis.get(1).criaEmpresa());
 		
-				//System.out.printf("Empresa cadastrada com sucesso!%nNome: %s.%nCNPJ: %s.%n", emp.get(0).getNome(), emp.get(0).getCnpj());
+		//System.out.printf("Empresa cadastrada com sucesso!%nNome: %s.%nCNPJ: %s.%n", emp.get(0).getNome(), emp.get(0).getCnpj());
 		
 		// FIM Criar uma Empresa
 		
 		
 		// INICIO Descadastrar uma Empresa
-		/*
+		
+		// opSis.get(1).descadastraEmpresa(emp);
+		
+		/* !!!!!!!!!!!!!!!!!!!         TEORICAMENTE JÁ ESTÁ IMPLEMENTADA. PRECISO DA CLASSE EMPRESA PARA TESTAR       !!!!!!!!!!!!!!
 		//int tamanho, i;
 		//int flag = 0;
 		flag = 0;
@@ -186,9 +145,17 @@ public class ExecutarPedro {
 		// FIM Descadastrar uma Empresa
 		
 		
+		// INICIO Verificar qntd de usuarios em uma linha
+		
+		// opSis.get(4).verificaQntdUsuarios(linha);
+		
+		// FIM Verificar qntd de usuarios em uma linha
+		
 		
 		// INICIO Alterar atributos de Linha
-		/*
+		
+		//opSis.get(4).alteraAtributoLinha(linha);
+		/* !!!!!!!!!!!!!!!!!!!         TEORICAMENTE JÁ ESTÁ IMPLEMENTADA. PRECISO DA CLASSE LINHA PARA TESTAR       !!!!!!!!!!!!!!
 		int tamanho, i;
 		int flag = 0, escolha;
 		String confirmacao;
@@ -254,7 +221,7 @@ public class ExecutarPedro {
 		
 		// INICIO Criar um Usuario
 		
-		//user.add(opSis.get(3).criaInfraestrutura());
+		//user.add(opSis.get(2).criaUsuario());
 		
 		//System.out.printf("Usuario cadastrado com sucesso!%nCPF: %s.%nNome: %s.%nData de Nascimento: %date.%nContato: %d.%nEndereco: %s.%nE-mail: %s.%n",
 		//		user.get(0).getCpf(), user.get(0).getDataNascimento(), user.get(0).getContato(), user.get(0).getEndereco(), user.get(0).getEmail());
@@ -274,44 +241,14 @@ public class ExecutarPedro {
 		
 		// INICIO Cancelar um Bilhete Unico
 		
-		/*
-		int tamanho, i;
-		int flag = 0;
-		double codigo;
-		String confirmacao;
-		
-		tamanho = bilhete.size();
-		System.out.printf("Tamanho do vetor bilhete e de %d", tamanho);
-		
-		System.out.printf("%nDigite o codigo do Bilhete a ser cancelado.%n");
-		codigo = input.nextDouble();
-		
-		for (i = 0; i < tamanho; i++) {			
-			if (codigo == bilhete.get(i).getCodigo()) {
-
-				flag = 1;
-				
-				System.out.printf("Deseja realmente cancelar o Bilhete abaixo?%n");
-				System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %d.%n", bilhete.get(i).getCodigo(), 
-						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-				System.out.printf("%n[S] Sim%n[N] Nao.%n");
-				input.nextLine(); // Para limpar o Scanner
-				confirmacao = input.nextLine();
-				
-				if(confirmacao.equals("S") || confirmacao.equals("s")) {
-					bilhete.get(i).setStatus("Inativo");
-				}
-			}
-		}
-		
-		if (flag == 0)
-			System.out.printf("Bilhete nao encontrado!");
-		*/
-		
+		//opSis.get(3).cancelaBilheteUnico(bilhete);
+			
 		// FIM Cancelar um Bilhete Unico
 		
 		
 		// INICIO Add saldo a um Bilhete Unico
+		
+		//opSis.get(3).addSaldo(bilhete);
 		
 		/*
 		int tamanho, i;
@@ -361,13 +298,14 @@ public class ExecutarPedro {
 		
 		// INICIO Criar uma Linha
 		
-		//infra.add(opSis.get(5).criaLinha());
+		//infra.add(opSis.get(4).criaLinha());
 		
 		//System.out.printf("Linha criada com sucesso!%nCodigo: %d.%nEmpresas autorizadas a operarem essa linha: %s.%nTarifas: %d.%n",
 		//		linha.get(0).getCodigo(), linha.get(0).getEmpresasAutorizadas(), linha.get(0).getTarifa());
 		//System.out.printf("Trajeto: " + Arrays.toString(linha.get(0).getTrajeto().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
 		
 		// FIM Criar uma Linha
+		
 		
 		
 		// ************************    VALIDAÇÃO DE DADOS INSERIDOS PELO USUÁRIO   ************************ //

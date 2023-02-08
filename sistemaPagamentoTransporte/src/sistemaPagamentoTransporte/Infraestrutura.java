@@ -11,12 +11,12 @@ public class Infraestrutura {
 	private int idInfraestrutura;
 	
 //****************************************** CONSTRUTORES ******************************************//
-	
+
 	Infraestrutura(String l, String tV, ArrayList<Integer> lA, int idInfra) {
 		
 		this.local = l;
 		this.tipoVeiculosAtendidos = tV;
-		this.linhasAtendidas = lA;
+		this.linhasAtendidas = new ArrayList<Integer>(lA);
 		this.idInfraestrutura = idInfra;		
 	}
 
