@@ -8,7 +8,7 @@ public class ExecutarSistemas {
 	// ************************    ArrayLists    ************************ //
 	
 	static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>();
-	//static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
+	static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
 	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
 	//static ArrayList<Linha> linha = new ArrayList<Linha>();
 	//static ArrayList<Usuario> user = new ArrayList<Usuario>();
@@ -23,6 +23,9 @@ public class ExecutarSistemas {
 		
 		
 		// ************************    Execução    ************************ //
+		
+		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Infraestrutura");
+		opSis.add(OpSis1);
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -86,6 +89,8 @@ public class ExecutarSistemas {
 								switch(escolhaTarefa) {
 								case 1:
 									
+									opSis.get(aux).criaInfraestrutura();
+									
 									break;
 									
 								case 2:
@@ -96,10 +101,6 @@ public class ExecutarSistemas {
 									break;
 								} // Fim switch tarefas Gerente de Infra
 							}
-							
-							//
-							
-								
 							
 						}while(escolhaTarefa != 0);	
 						
