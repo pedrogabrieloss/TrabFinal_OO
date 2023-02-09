@@ -54,7 +54,7 @@ public class ExecutarSistemas {
 				
 			case 3:
 				do { // Prender na interface o Op. do Sistema
-					System.out.printf("Qual ambiente deseja acessar?%n[1] Gerenciamento de INFRAESTRUTURA.%n[2] Gerenciamento de LINHAS.%n"
+					System.out.printf("%nQual ambiente deseja acessar?%n[1] Gerenciamento de INFRAESTRUTURA.%n[2] Gerenciamento de LINHAS.%n"
 							+ "[3] Gerenciamento de EMPRESAS.%n[4] Gerenciamento de USUARIOS e BILHETES.%n[0] Sair.%n");	
 					escolhaAmbiente = input.nextInt();
 					
@@ -83,18 +83,17 @@ public class ExecutarSistemas {
 							}
 							
 							else {
-								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Infraestrutura.%n[2] DESATIVAR Infraestrutura.%n[0] Sair.%n");	
+								System.out.printf("%nQue tarefa deseja realizar?%n[1] CRIAR Infraestrutura.%n[2] DESATIVAR Infraestrutura.%n[0] Sair.%n");	
 								escolhaTarefa = input.nextInt();
 								
 								switch(escolhaTarefa) {
 								case 1:
 									
 									opSis.get(aux).criaInfraestrutura();
-									
 									break;
 									
 								case 2:
-									
+									opSis.get(aux).desativaInfraestrutura(infra);
 									break;
 									
 								default:
@@ -108,8 +107,6 @@ public class ExecutarSistemas {
 						
 					case 2:  // Gerente de Linhas
 						do { // Prender no ambiente Gerente de Linhas
-							
-							//
 							
 							boolean existenciaGerenteLinhas;
 							existenciaGerenteLinhas = false;
@@ -132,18 +129,20 @@ public class ExecutarSistemas {
 							}
 							
 							else {
-								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR uma Linha.%n[0] Sair.%n");	// NÃO DEVERIA TER UM DESATIVA LINHA?
+								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR uma Linha.%n[0] Sair.%n");
 								escolhaTarefa = input.nextInt();
 								
 								switch(escolhaTarefa) {
 								case 1:
 									
+									//opSis.get(aux).criaLinha();
 									break;
 									
 								case 2:
 									
+									//opSis.get(aux).alteraAtributoLinha(linha);
 									break;
-									
+								
 								default:
 									break;
 								} // Fim switch tarefas Gerente de Linha
@@ -184,18 +183,22 @@ public class ExecutarSistemas {
 								switch(escolhaTarefa) {
 								case 1:
 									
+									//opSis.get(aux).criaEmpresa();
 									break;
 									
 								case 2:
 									
+									//opSis.get(aux).descadastraEmpresa(emp);
 									break;
 									
 								case 3:
 									
+									//opSis.get(aux).consultaFinanca();   ****************    ATENÇÃO!!!! MÉTODO AINDA NÃO IMPLEMENTADO   ***************
 									break;
 									
 								case 4:
 									
+									//opSis.get(aux).fazContrato();   ****************    ATENÇÃO!!!! MÉTODO AINDA NÃO IMPLEMENTADO   ***************
 									break;
 									
 								default:
@@ -238,18 +241,22 @@ public class ExecutarSistemas {
 								switch(escolhaTarefa) {
 								case 1:
 									
+									//opSis.get(aux).cadastraUsuario();
 									break;
 									
 								case 2:
 									
+									//opSis.get(aux).criaBilheteUnico();
 									break;
 									
 								case 3:
 									
+									//opSis.get(aux).cancelaBilheteUnico(bilhete)
 									break;
 									
 								case 4:
 									
+									//opSis.get(aux).addSaldo(bilhete)
 									break;
 									
 								default:

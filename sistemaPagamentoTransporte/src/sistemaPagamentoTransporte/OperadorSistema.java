@@ -305,6 +305,8 @@ public class OperadorSistema {
 	
 	// PENSAR NO MÉTODO consultaFinanca()
 	
+	// PENSAR NO MÉTODO fazContrato()
+	
 	/*public Usuario cadastraUsuario() {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
