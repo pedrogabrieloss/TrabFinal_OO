@@ -7,7 +7,7 @@ public class ExecutarSistemas {
 	
 	// ************************    ArrayLists    ************************ //
 	
-	//static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>();
+	static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>();
 	//static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
 	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
 	//static ArrayList<Linha> linha = new ArrayList<Linha>();
@@ -19,7 +19,7 @@ public class ExecutarSistemas {
 		
 		// ************************    Variaveis    ************************ //
 		
-		int escolhaInterface, escolhaAmbiente, escolhaTarefa;
+		int escolhaInterface, escolhaAmbiente, escolhaTarefa, aux;
 		
 		
 		// ************************    Execução    ************************ //
@@ -58,21 +58,48 @@ public class ExecutarSistemas {
 					switch(escolhaAmbiente) {
 					case 1: // Gerente de Infra
 						do { // Prender no ambiente Gerente de Infra
-							System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Infraestrutura.%n[2] DESATIVAR Infraestrutura.%n[0] Sair.%n");	
-							escolhaTarefa = input.nextInt();
+			
+							boolean existenciaGerenteInfra;
+							existenciaGerenteInfra = false;
 							
-							switch(escolhaTarefa) {
-							case 1:
+							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Infraestrutura"
+								if (opSis.get(aux).getCargo().equals("Gerente de Infraestrutura")) {
+									
+									existenciaGerenteInfra = true; // Se já existir, existenciaGerenteInfra = true
+									break; // O break é porque ao encontrar o primeiro Gerente de Infra, o for já é parado
+								}
+							}
+							
+							if(existenciaGerenteInfra == false) {
+								System.out.printf("Ainda nao existem Gerentes de Infraestutura cadastrados. Para prosseguir, e necessario "
+										+ "ao menos um. Transferindo para o ambiente de cadastro...%n");
 								
-								break;
+								// Fazer o cadastro de um Gerente de Infra
 								
-							case 2:
+								escolhaTarefa = 0;
+							}
+							
+							else {
+								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Infraestrutura.%n[2] DESATIVAR Infraestrutura.%n[0] Sair.%n");	
+								escolhaTarefa = input.nextInt();
 								
-								break;
+								switch(escolhaTarefa) {
+								case 1:
+									
+									break;
+									
+								case 2:
+									
+									break;
+									
+								default:
+									break;
+								} // Fim switch tarefas Gerente de Infra
+							}
+							
+							//
+							
 								
-							default:
-								break;
-							} // Fim switch tarefas Gerente de Infra
 							
 						}while(escolhaTarefa != 0);	
 						
@@ -80,21 +107,46 @@ public class ExecutarSistemas {
 						
 					case 2:  // Gerente de Linhas
 						do { // Prender no ambiente Gerente de Linhas
-							System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR uma Linha.%n[0] Sair.%n");	// NÃO DEVERIA TER UM DESATIVA LINHA?
-							escolhaTarefa = input.nextInt();
 							
-							switch(escolhaTarefa) {
-							case 1:
+							//
+							
+							boolean existenciaGerenteLinhas;
+							existenciaGerenteLinhas = false;
+							
+							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Linhas"
+								if (opSis.get(aux).getCargo().equals("Gerente de Linhas")) {
+									
+									existenciaGerenteLinhas = true; // Se já existir, existenciaGerenteLinhas = true
+									break; // O break é porque ao encontrar o primeiro Gerente de Infra, o for já é parado
+								}
+							}
+							
+							if(existenciaGerenteLinhas == false) {
+								System.out.printf("Ainda nao existem Gerentes de Linhas cadastrados. Para prosseguir, e necessario "
+										+ "ao menos um. Transferindo para o ambiente de cadastro...%n");
 								
-								break;
+								// Fazer o cadastro de um Gerente de Linha
 								
-							case 2:
+								escolhaTarefa = 0;
+							}
+							
+							else {
+								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR uma Linha.%n[0] Sair.%n");	// NÃO DEVERIA TER UM DESATIVA LINHA?
+								escolhaTarefa = input.nextInt();
 								
-								break;
-								
-							default:
-								break;
-							} // Fim switch tarefas Gerente de Linha
+								switch(escolhaTarefa) {
+								case 1:
+									
+									break;
+									
+								case 2:
+									
+									break;
+									
+								default:
+									break;
+								} // Fim switch tarefas Gerente de Linha
+							}
 							
 						}while(escolhaTarefa != 0);	// Prender no ambiente Gerente de Linha
 						
@@ -102,65 +154,111 @@ public class ExecutarSistemas {
 						
 					case 3: // Gerente de Empresa
 						do { // Prender no ambiente Gerente de Empresa
-							System.out.printf("Que tarefa deseja realizar?%n[1] CADASTRAR Empresa.%n[2] DESCADASTRAR Empresa.%n[3] CONSULTAR "
-									+ "FINCANCA de uma Empresa.%n[4] Estabelecer CONTRATO.%n[0] Sair.%n");	
-							escolhaTarefa = input.nextInt();
 							
-							switch(escolhaTarefa) {
-							case 1:
+							boolean existenciaGerenteEmpresa;
+							existenciaGerenteEmpresa = false;
+							
+							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Empresas"
+								if (opSis.get(aux).getCargo().equals("Gerente de Empresas")) {
+									
+									existenciaGerenteEmpresa = true; // Se já existir, existenciaGerenteInfra = true
+									break; // O break é porque ao encontrar o primeiro Gerente de Infra, o for já é parado
+								}
+							}
+							
+							if(existenciaGerenteEmpresa == false) {
+								System.out.printf("Ainda nao existem Gerentes de Empresas cadastrados. Para prosseguir, e necessario "
+										+ "ao menos um. Transferindo para o ambiente de cadastro...%n");
 								
-								break;
+								// Fazer o cadastro de um Gerente de Empresa
 								
-							case 2:
+								escolhaTarefa = 0;
+							}
+							
+							else {
+								System.out.printf("Que tarefa deseja realizar?%n[1] CADASTRAR Empresa.%n[2] DESCADASTRAR Empresa.%n[3] CONSULTAR "
+										+ "FINCANCA de uma Empresa.%n[4] Estabelecer CONTRATO.%n[0] Sair.%n");	
+								escolhaTarefa = input.nextInt();
 								
-								break;
-								
-							case 3:
-								
-								break;
-								
-							case 4:
-								
-								break;
-								
-							default:
-								break;
-							} // Fim switch tarefas Gerente de Empresa
+								switch(escolhaTarefa) {
+								case 1:
+									
+									break;
+									
+								case 2:
+									
+									break;
+									
+								case 3:
+									
+									break;
+									
+								case 4:
+									
+									break;
+									
+								default:
+									break;
+								} // Fim switch tarefas Gerente de Empresa
+							}
 						
 						}while(escolhaTarefa != 0);	// Prender no ambiente Gerente de Empresa
 						
 						break; // break do case 3 da escolha de ambiente (gerente de Empresa)
 						
-					case 4: //Gerente de Usuario e Bilhetes
-						do { // Prender no ambiente Gerente de Usuario e Bilhete
-							System.out.printf("Que tarefa deseja realizar?%n[1] CADASTRAR Usuario.%n[2] CRIAR Bilhete Unico.%n[3] CANCELAR "
-									+ "Bilhete Unico.%n[4] ADICIONAR RECARGA ao Bilhete Unico.%n[0] Sair.%n");	
-							escolhaTarefa = input.nextInt();
+					case 4: //Gerente de Usuarios e Bilhetes
+						do { // Prender no ambiente Gerente de Usuarios e Bilhetes
+
+							boolean existenciaGerenteUsuarioBilhete;
+							existenciaGerenteUsuarioBilhete = false;
 							
-							switch(escolhaTarefa) {
-							case 1:
-								
-								break;
-								
-							case 2:
-								
-								break;
-								
-							case 3:
-								
-								break;
-								
-							case 4:
-								
-								break;
-								
-							default:
-								break;
-							} // Fim switch tarefas Gerente de Usuario
+							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Usuarios e Bilhetes"
+								if (opSis.get(aux).getCargo().equals("Gerente de Usuarios e Bilhetes")) {
+									
+									existenciaGerenteUsuarioBilhete = true; // Se já existir, existenciaGerenteUsuarioBilhete = true
+									break; // O break é porque ao encontrar o primeiro Gerente de Infra, o for já é parado
+								}
+							}
 							
-						}while(escolhaTarefa != 0);	// Prender no ambiente Gerente de Usuario e Bilhete
+							if(existenciaGerenteUsuarioBilhete == false) {
+								System.out.printf("Ainda nao existem Gerentes de Usuarios e Bilhetes cadastrados. Para prosseguir, e necessario "
+										+ "ao menos um. Transferindo para o ambiente de cadastro...%n");
+								
+								// Fazer o cadastro de um Gerente de Usuarios e Bilhetes
+								
+								escolhaTarefa = 0;
+							}
+							
+							else {
+								System.out.printf("Que tarefa deseja realizar?%n[1] CADASTRAR Usuario.%n[2] CRIAR Bilhete Unico.%n[3] CANCELAR "
+										+ "Bilhete Unico.%n[4] ADICIONAR RECARGA ao Bilhete Unico.%n[0] Sair.%n");	
+								escolhaTarefa = input.nextInt();
+								
+								switch(escolhaTarefa) {
+								case 1:
+									
+									break;
+									
+								case 2:
+									
+									break;
+									
+								case 3:
+									
+									break;
+									
+								case 4:
+									
+									break;
+									
+								default:
+									break;
+								} // Fim switch tarefas Gerente de Usuario
+							}
+							
+						}while(escolhaTarefa != 0);	// Prender no ambiente Gerente de Usuarios e Bilhetes
 						
-						break; // break do case 4 da escolha de ambiente (gerente de Usuario e Bilhete)
+						break; // break do case 4 da escolha de ambiente (gerente de Usuarios e Bilhetes)
 						
 					default:
 						
