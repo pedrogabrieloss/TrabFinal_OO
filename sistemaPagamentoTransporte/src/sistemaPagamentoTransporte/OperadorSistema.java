@@ -70,34 +70,59 @@ public class OperadorSistema {
 		
 		// Criando um objeto Infraestrutura
 		
-		Infraestrutura Infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
+		Infraestrutura infra = new Infraestrutura(local, tipoVeiculosAtendidos, linhasAtendidas, idInfraestrutura);
 		
-		return Infra;
-
+		System.out.printf("Infraestrutura criada com sucesso!%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
+				infra.getIdInfraestrutura(), infra.getLocal(), infra.getTipoVeiculosAtendidos());
+		System.out.printf("Linhas atendidas: " + Arrays.toString(infra.getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
+		
+		return infra;
 	}
 
-	public void desativaInfraestrutura() {  // COMO FAZER ESSA CLASSE ENXERGAR O ARRAYLIST INFRA, QUE ESTÁ NA MAIN?
-		//************************ VARIÁVEIS LOCAIS ************************//
-		int idInfraestrutura, confirmacao;
-		boolean busca = false;
+	
+	public void desativaInfraestrutura(ArrayList<Infraestrutura> infra) { 
 		
-		//*********** OBTER AS INFORMAÇÕES DA INFRAESTRUTURA ***********//
+		//************************ VARIÁVEIS LOCAIS ************************//
+		int idInfraestrutura, i;
+		int flag = 0;
+		String confirmacao;
 		
 		Scanner input = new Scanner(System.in);
-		
-		//qntdInfraestrutura = infra.size();
+
+		System.out.printf("Tamanho do vetor infra e de %d", infra.size());
 		
 		System.out.printf("%nDigite o codigo da Infraestrutura a ser desativada.%n");
 		idInfraestrutura = input.nextInt();
 		
-		//Procurar a Infra pelo número do código
+		for (i = 0; i < infra.size(); i++) {			
+			if (idInfraestrutura == infra.get(i).getIdInfraestrutura()) {
+				
+				System.out.printf("Infraestrutura encontrada!%nID: %d.%n", infra.get(i).getIdInfraestrutura());
+
+				flag = 1;
+			
+				System.out.printf("Deseja realmente excluir essa Infraestrutura?%nID: %d.%nLocal: %s.%nTipos de Veiculos: %s.%n",
+						infra.get(i).getIdInfraestrutura(), infra.get(i).getLocal(), infra.get(i).getTipoVeiculosAtendidos());
+				System.out.printf("Linhas atendidas: " + Arrays.toString(infra.get(i).getLinhasAtendidas().toArray()).replaceAll("[\\[\\]]", "") + ".%n");
+				System.out.printf("%n[S] Sim.%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();
+				
+				if (confirmacao.equals("S") || confirmacao.equals("s")) {
+					System.out.printf("Infraestrutura %d excluida com sucesso!%n", infra.get(i).getIdInfraestrutura());
+					
+					infra.remove(i);
+				}
+				else {
+					System.out.printf("Operacao abortada!%n");
+				}
+				break;
+			}
+		}
 		
-		
-		System.out.printf("%nDeseja realmente excluir a Infraestrutura %d?%n", idInfraestrutura);
-		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
-		System.out.printf("%n[1] Sim%n[2] Nao.%n");
-		confirmacao = input.nextInt();
-		//Excluir ela do banco de dados
+		if (flag == 0)
+			System.out.printf("Infraestrutura nao encontrada!");
+
 	}
 	
 	/*public Empresa criaEmpresa() {
@@ -117,111 +142,175 @@ public class OperadorSistema {
 		System.out.printf("%nDigite o CNPJ da Empresa: ");
 		cnpj = input.nextLine();
 		
-		Empresa Emp = new Empresa(nome, cnpj);
+		Empresa emp = new Empresa(nome, cnpj);
 		
-		return Emp;
+		System.out.printf("Empresa cadastrada com sucesso!%nNome: %s.%nCNPJ: %s.%n", emp.getNome(), emp.getCnpj());
+		
+		return emp;
 	} /*
 	
-	/*public void descadastraEmpresa() {
+	/*public void descadastraEmpresa(ArrayList<Empresa> emp) {
 
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		String cnpj;
-		int confirmacao;
+		//int i;
+		//int flag = 0;
+		flag = 0;
+		//String confirmacao, cnpj;
 		
-		// *********** CONFIRMAR EMPRESA A SER DESATIVADA *********** //
+		// ************************ DESCADASTRAR EMPRESA ************************ //
 		
-		Scanner input = new Scanner(System.in);
+		System.out.printf("Tamanho do vetor emp e de %d", emp.size());
 		
-		System.out.printf("%nDigite o CNPJ da Empresa que deseja descadastrar.%n");
+		input.nextLine(); // Para limpar o Scanner
+		
+		System.out.printf("%nDigite o CNPJ da Empresa a ser retirada do sistema.%n");
 		cnpj = input.nextLine();
 		
-		// Procurar nas empresas pelo CNPJ e excluir
+		for (i = 0; i < emp.size(); i++) {			
+			if (cnpj == emp.get(i).getCnpj()) {
+				
+				//System.out.printf("Empresa encontrada!%nCNPJ: %s.%n", emp.get(i).getCnpj());
+
+				flag = 1;
+			
+				System.out.printf("Deseja realmente excluir essa Empresa?%nCNPJ: %s.%nNome: %s.%n", emp.get(i).getCnpj(), emp.get(i).getNome());
+				System.out.printf("%n[S] Sim%n[N] Nao.%n");
+				confirmacao = input.nextLine();
+				
+				if (confirmacao.equals("S") || confirmacao.equals("s")) {
+					System.out.printf("Empresa excluida com sucesso!%n");
+					
+					emp.remove(i);
+				}
+				else {
+					System.out.printf("Operacao abortada!%n");
+				}
+				break;
+			}
+		}
 		
-		System.out.printf("%nDeseja realmente excluir a Empresa %s?%n", cnpj);
-		//System.out.printf("%nxxxxxxxxx%n"); EXIBIR OS DADOS DA INFRA A SER EXCLUIDA
-		System.out.printf("%n[1] Sim%n[2] Nao.%n");
-		confirmacao = input.nextInt();
+		if (flag == 0)
+			System.out.printf("Empresa nao encontrada!");
 	}
 	
-	/*public int verificaQntdUsuarios() {    // A VERIFICAR POSTERIORMENTE
+	/*public void verificaQntdUsuarios(ArrayList<Linha> linha) { 
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		int abrangencia, aux, codigo, passageiros;
+		int abrangencia, aux, codigo, i;
+		int passageiros = 0;
+		String confirmacao
 		
 		// *********** EXECUÇÃO *********** //
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.printf("%nDeseja pesquisar a quantidade de usuarios em linhas específicas ou de todo o sistema?%n"
-				+ "[1] Linhas específicas.%n[0] Todo o sistema.");
+		System.out.printf("%nDeseja pesquisar a quantidade de passageiros de uma linha especifica ou de todo o sistema?%n"
+				+ "[1] Linha especifica.%n[0] Todo o sistema.");
 		abrangencia = input.nextInt();
 		
 		if (abrangencia == 1) {
-			System.out.printf("%nDigite em quantas linhas deseja realizar a pesquisa%n");
-			abrangencia = input.nextInt();
-			
-			for (aux = 0; aux < abrangencia; aux++) {
+			do {
 				System.out.printf("%nDigite o codigo da linha%n");
 				codigo = input.nextInt();
 				
-				// passageiros = buscaUsuarios(codigo);
-				// Vai no vetor de Linhas e pesquisa pelo código, retornando o número de usuários
+				for (i = 0; i < linha.size(); i++) {			
+					if (codigo == linha.get(i).getCodigo()) {
+						
+						System.out.printf("Quantidade de passageiros da linha %i: %i.%n", linha.get(i).getCodigo(), linha.get(i).getQntdPassageiros());
+		
+						flag = 1;
+						break;
+					}
+				}
+			
+				if (flag == 0)
+					System.out.printf("Linha nao encontrada!");
 				
-				System.out.printf("%nA linha %d possui %d passageiros diarios%n", codigo, passageiros);
-			};
+				System.out.printf("Deseja  pesquisar a quantidade de passageiros de outra linha especifica?%n[S] Sim.%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();	
+			}while(confirmacao.equals("S") || confirmacao.equals("s"));
 		}
 		
 		else {
-			// Somatório do usuarios de todas as linhas. Percorrer o vetor e ir somando esse atributo
+			for (i = 0; i < linha.size(); i++) {			
+				passageiros = passageiros + linha.get(i).getQntdPassageiros();
+			}
+			System.out.printf("Quantidade de passageiros do sistema: %i.%n", passageiros);
 		}
 	}/*
 	
-	/*public void alteraAtributoLinha() {
+	/*public void alteraAtributoLinha(ArrayList<Linha> linha) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		int codigo, selecao;
-		String escolha;
+		int codigo, i;
+		int flag = 0, escolha;
+		String confirmacao;
 		
 		// *********** EXECUÇÃO *********** //
-		Scanner input = new Scanner(System.in);
+		System.out.printf("Tamanho do vetor Linha e de %d", linha.size());
 		
-		System.out.printf("%nQual linha você gostaria de alterar?%n");
+		System.out.printf("%nDigite o codigo da Linha a ser alterada.%n");
 		codigo = input.nextInt();
 		
-		do {
-			System.out.printf("%nQual atributo você gostaria de alterar?%n[1] Horario.%n[2] Trajeto.%n[3] Empresa autorizada.%n"
-				+ "[4] Tarifa.%n[5] Quantidade de passageiros.%n");
-			selecao = input.nextInt();
-			
-			switch (selecao) {
-			case 1:
-				//
-			case 2:
-				//
-			case 3:
-				//
-			case 4:
-				//
-			case 5:
-				//
-			default:
-				System.out.printf("%nNenhum atributo foi alterado.%n");
+		for (i = 0; i < linha.size(); i++) {			
+			if (codigo == linha.get(i).getCodigo()) {
+
+				flag = 1;
+				
+				do {
+					System.out.printf("Qual atributo deseja alterar?%n[1] Codigo   (Atual: %d).%n[2] Empresas autorizadas a operar essa linha:   (Atual: %s)."
+							+ "%n[3] Tarifa:   (Atual:%d).%n", linha.get(i).getCodigo(), linha.get(i).getEmpresasAutorizadas(), linha.get(i).getTarifa());
+					System.out.printf("[4] Trajeto:    (Atual:" + Arrays.toString(linha.get(i).getTrajeto().toArray()).replaceAll("[\\[\\]]", "") + ").%n[0] Cancelar.");
+					escolha = input.nextInt();
+					
+					switch(escolha) {
+						case 1:
+							System.out.printf("Digite o novo codigo%n");
+							linha.get(i).setCodigo(input.nextInt());
+							break;
+							
+						case 2:
+							input.nextLine(); // Para limpar o Scanner
+							System.out.printf("Digite a(s) nova(s) empresa(s) autorizada(s) a operar nessa Linha%n");
+							linha.get(i).setEmpresasAutorizadas(input.nextLine());
+							break;
+					
+						case 3:
+							System.out.printf("Digite o novo valor da tarifa%n");
+							linha.get(i).setTarifa(input.nextInt());
+							break;
+							
+						//case 4:    // VERIFICAR COM O RESPONSAVEL PELA CLASSE LINHAS COMO ELA CONSTRUIU O CODIGO PARA RECEBER O TRAJETO
+							//System.out.printf("Digite a(s) nova(s) empresa(s) autorizada(s) a operar nessa Linha%n");
+							//linha.get(i).setEmpresasAutorizadas(input.nextLine());
+							//break;
+							
+						default:
+							System.out.printf("Operacao abortada!%n");
+					}
+					
+					input.nextLine(); // Para limpar o Scanner
+					
+					System.out.printf("%nDeseja alterar algum outro atributo?%n[S] Sim%n[N] Nao.%n");
+					confirmacao = input.nextLine();
+					
+				}while(confirmacao.equals("S") || confirmacao.equals("s"));
 			}
-			
-			input.nextLine(); // Para limpar o Scanner
-			
-			System.out.printf("%nDeseja alterar algum outro atributo?%n[S] Sim.%n[N] Nao.%n");
-			escolha = input.nextLine();
-			
-		} while (escolha.equals("S") || escolha.equals("s"));
+		}
+		
+		if (flag == 0)
+			System.out.printf("Linha nao encontrada!");
 	}*/
+	
+	// PENSAR NO MÉTODO consultaFinanca()
 	
 	/*public Usuario cadastraUsuario() {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String cpf, email, nome, endereco;
 		double contato;
-//		private Date dataNascimento;
+		//private Date dataNascimento;
 		// Se for muito complicado manipular as variáveis com Date, usar int e quebrar em dd, mm e ano.
 		
 		// *********** EXECUÇÃO *********** //
@@ -242,7 +331,7 @@ public class OperadorSistema {
 		System.out.printf("%nInsira o e-mail do novo usuario: ");
 		email = input.nextLine();
 		
-		System.out.printf("%nInsira o número de telefone (somente numeros) do novo usuário: ");
+		System.out.printf("%nInsira o numero de telefone do novo usuário (somente numeros): ");
 		contato = input.nextDouble();
 		
 		Usuario user = new Usuario(cpf/*, dataNascimento* /, nome, endereco, email, contato);
@@ -275,39 +364,85 @@ public class OperadorSistema {
 		return bilhete;
 	}*/
 	
-	/*public void cancelaBilheteUnico() {
+	/*public void cancelaBilheteUnico(ArrayList<Bilhete> bilhete) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
+		int i;
+		int flag = 0;
 		double codigo;
+		String confirmacao;
 		
 		// *********** EXECUÇÃO *********** //
-		Scanner input = new Scanner(System.in);
+		System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
 		
-		System.out.printf("%nInsira o codigo do Bilhete Unico a ser cancelado.%n");
+		System.out.printf("%nDigite o codigo do Bilhete a ser cancelado.%n");
 		codigo = input.nextDouble();
 		
-		// Procura e seleciona o bilhete unico com o código informado
+		for (i = 0; i < tamanho; i++) {			
+			if (codigo == bilhete.get(i).getCodigo()) {
+
+				flag = 1;
+				
+				System.out.printf("Deseja realmente cancelar o Bilhete abaixo?%n");
+				System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %d.%n", bilhete.get(i).getCodigo(), 
+						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
+				System.out.printf("%n[S] Sim%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();
+				
+				if(confirmacao.equals("S") || confirmacao.equals("s")) {
+					bilhete.get(i).setStatus("Inativo");
+				}
+			}
+		}
 		
-		BilheteUnicoXX.setStatus("Bloqueado");
+		if (flag == 0)
+			System.out.printf("Bilhete nao encontrado!");
 	}*/
 	
-	/*public void addSaldo() {
+	/*public void addSaldo(ArrayList<Bilhete> bilhete) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		double codigo, valor;
+		int i;
+		int flag = 0;
+		double codigo, recarga;
+		String confirmacao;
 		
 		// *********** EXECUÇÃO *********** //
-		Scanner input = new Scanner(System.in);
+		System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
 		
-		System.out.printf("%nInsira o codigo do Bilhete.%n");
+		System.out.printf("%nDigite o codigo do Bilhete a ser recarregado.%n");
 		codigo = input.nextDouble();
 		
-		System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
-		valor = input.nextDouble();
+		for (i = 0; i < bilhete.size(); i++) {			
+			if (codigo == bilhete.get(i).getCodigo()) {
+
+				flag = 1;
+				
+				System.out.printf("Qual o valor da recarga?%n");
+				recarga = input.nextDouble();
+				
+				System.out.printf("Deseja realmente adicionar %d ao bilhete abaixo?%n", recarga);
+				System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %d.%n", bilhete.get(i).getCodigo(), 
+						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
+				System.out.printf("%n[S] Sim%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();
+				
+				if(confirmacao.equals("S") || confirmacao.equals("s")) {
+					bilhete.get(i).setSaldo(bilhete.get(i).getSaldo() + recarga);
+					
+					System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %d.%n", bilhete.get(i).getSaldo());
+				}
+				
+				else {
+					System.out.printf("Operacao cancelada!%nSaldo: %d.%n", bilhete.get(i).getSaldo());
+				}
+			}
+		}
 		
-		// Procura e seleciona o bilhete unico com o código informado
-		
-		BilheteUnicoXX.setSaldo(valor); //LEMBRAR QUE NA CLASSE TEM QUE SER SALDO+VALOR QUE ENTRAR
+		if (flag == 0)
+			System.out.printf("Bilhete nao encontrado!");
 	}*/
 	
 	/*public Linha criaLinha() {
@@ -352,4 +487,5 @@ public class OperadorSistema {
 		
 		return linha;
 	}*/
+	
 }
