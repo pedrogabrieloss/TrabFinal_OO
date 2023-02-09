@@ -5,7 +5,6 @@ import java.time.*;
 
 public class Contrato {
 
-	
 //****************************************** ATRIBUTOS ******************************************//
 	private String nomeEmpresa, tipoVeiculo;
 	private int qntdVeiculos;
@@ -22,8 +21,7 @@ public class Contrato {
 		this.numContrato = numC;
 		this.valorContrato = vC;
 		this.dataInicio = LocalDate.now();
-		this.dataVencimento = LocalDate.now().plusYears(anos);
-		
+		this.dataVencimento = LocalDate.now().plusYears(anos);	
 	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
