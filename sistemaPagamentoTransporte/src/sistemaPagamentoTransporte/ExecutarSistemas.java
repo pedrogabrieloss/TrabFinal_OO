@@ -19,8 +19,7 @@ public class ExecutarSistemas {
 		
 		// ************************    Variaveis    ************************ //
 		
-		int escolhaInterface, escolhaAmbiente, escolhaTarefa, aux;
-		
+		int escolhaInterface, escolhaAmbiente, escolhaTarefa, aux;	
 		
 		// ************************    Execução    ************************ //
 		
@@ -287,7 +286,6 @@ public class ExecutarSistemas {
 			} // Fim switch de interface
 			
 		}while(escolhaInterface != 0);
-		//System.out.printf("SAIU DO DO-WHILE.");
 
 	}
 
