@@ -5,43 +5,35 @@ import java.time.*;
 public class Usuario extends Pessoa {
 	
     //************** ATRIBUTOS **************//
-    private int cpf;
+    private String cpf;
     private LocalDate dataDeNascimento;
     
     //************** CONSTRUTORES **************//
-    public Usuario(int cpf, String nome, String endereço, int contato, String email, char sexo) {
+    public Usuario(String cpf, String nome, String endereço, Double contato, String email, char sexo) {
         super(nome, endereço, contato, email, sexo);
         this.cpf = cpf;
         this.dataDeNascimento = LocalDate.now();   
     }
     
     //************** SETTERS E GETTERS **************//
-    public void setCpf(int cpf) {
-        if( (cpf <= 10) || (cpf >= 12)) {
-            throw new IllegalArgumentException("CPF invalido");
-        }
-        else 
+    public void setCpf(String cpf) {
             this.cpf = cpf;
     }
     
     public void setDataDeNascimento(int diaN, int mesN, int anoN) {
-        int aux;
+        int aux1, aux2, aux3;
         LocalDate dataN; 
 
         dataN= LocalDate.now(); 
-        aux = anoN - dataN.getYear(); 
-        dataN= LocalDate.now().plusYears(aux);
-
-        aux = mesN - dataN.getMonthValue(); 
-        dataN= LocalDate.now().plusMonths(aux);
-        
-        aux = diaN - dataN.getDayOfMonth(); 
-        dataN= LocalDate.now().plusDays(aux);
+        aux1 = anoN - dataN.getYear(); 
+        aux2 = mesN - dataN.getMonthValue(); 
+        aux3 = diaN - dataN.getDayOfMonth(); 
+        dataN= LocalDate.now().plusYears(aux1).plusMonths(aux2).plusDays(aux3);
         
         this.dataDeNascimento = dataN;      
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return this.cpf;
     }
 

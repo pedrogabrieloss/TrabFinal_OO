@@ -6,13 +6,13 @@ public class Pessoa {
     private String nome;
     //private int idPessoa;
     private String endereço;
-    private int contato;
+    private Double contato;
     private String email; 
     private char sexo; 
     
 
 //************** CONSTRUTORES **************//    
-    Pessoa(String nome, String endereço, int contato, String email, char sexo) {
+    Pessoa(String nome, String endereço, Double contato, String email, char sexo) {
         this.nome = nome;
      // this.idPessoa = idPessoa;
         this.endereço = endereço;
@@ -46,7 +46,7 @@ public class Pessoa {
              this.endereço = endereço;
         
     }
-     public void setContato(int contato){
+     public void setContato(Double contato){
          if( (contato >10) || (contato > 12) ){
              throw new IllegalArgumentException("Número invalido. Digite novamente");
          }
@@ -86,11 +86,11 @@ public class Pessoa {
          return this.idPessoa;
      }*/
      
-     public String getEndereço(){
+     public String getEndereco(){
          return this.endereço;
      }
      
-     public int getContato(){
+     public Double getContato(){
          return this.contato;
      }
      

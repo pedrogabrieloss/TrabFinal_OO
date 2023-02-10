@@ -246,7 +246,7 @@ public class ExecutarSistemas {
 								
 								switch(escolhaTarefa) {
 								case 1:	
-									//user.add(opSis.get(aux).cadastraUsuario());  // PROBLEMA COM CPF
+									user.add(opSis.get(aux).cadastraUsuario());
 									break;
 									
 								case 2:

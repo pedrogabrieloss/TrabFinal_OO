@@ -375,12 +375,13 @@ public class OperadorSistema {
 		return cont;	
 	}
 	
-	/*public Usuario cadastraUsuario() {
+	public Usuario cadastraUsuario() {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		String cpf, email, nome, endereco;
 		char sexo;
-		int contato, diaN, mesN, anoN;
+		int diaN, mesN, anoN;
+		Double contato;
 		
 		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
@@ -391,7 +392,7 @@ public class OperadorSistema {
 		System.out.printf("%nInsira o nome do novo usuario: ");
 		nome = input.nextLine();
 		
-		System.out.printf("%nInsira o genero do usuario.%n[F] Feminino.%n%n[M] Masculino.%n");
+		System.out.printf("%nInsira o genero do usuario.%n[F] Feminino.%n[M] Masculino.%n");
 		sexo = input.next().charAt(0);
 		
 		System.out.printf("%nInsira o DIA DE NASCIMENTO do novo usuario: ");
@@ -404,20 +405,27 @@ public class OperadorSistema {
 		anoN = input.nextInt();
 		
 		System.out.printf("%nInsira agora o endereco: ");
+		input.nextLine(); // Limpeza do buffer
 		endereco = input.nextLine();
 		
 		System.out.printf("%nInsira o e-mail do novo usuario: ");
 		email = input.nextLine();
 		
-		System.out.printf("%nInsira o numero de telefone do novo usuário (somente numeros): ");
-		contato = input.nextInt();
+		System.out.printf("%nInsira o numero de telefone do novo usuario (somente numeros): ");
+		contato = input.nextDouble();
 		
 		Usuario user = new Usuario(cpf, nome, endereco, contato, email, sexo);
 		
 		user.setDataDeNascimento(diaN, mesN, anoN);
 		
+		System.out.printf("%nUsuario cadastrado com sucesso!%nCPF: %s.%nNome: %s.%nGenero: %c.%nEndereco: %s.%n"
+				+ "E-mail: %s.%nContato %.0f.%n", user.getCpf(), user.getNome(), user.getSexo(), user.getEndereco(),
+				user.getEmail(), user.getContato());
+		System.out.printf("Data de nascimento: %d/%d/%d%n", user.getDataDeNascimento().getDayOfMonth(),
+				user.getDataDeNascimento().getMonthValue(), user.getDataDeNascimento().getYear());
+		
 		return user;
-	}*/
+	}
 	
 	public BilheteUnico criaBilheteUnico() {
 		
