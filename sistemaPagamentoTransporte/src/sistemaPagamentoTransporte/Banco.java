@@ -44,6 +44,7 @@ public class Banco {
 		int flag = 0;
 		double codigo, recarga;
 		String confirmacao; 
+		confirmacao = "N";
 		boolean status;
 		LocalDate dataEmissao, dataVencimento;
 		
@@ -136,7 +137,6 @@ public class Banco {
 					    
 					    default:
 					      System.out.printf("Escolha uma forma de pagamento");	
-					      confirmacao = "N";
 					} // Fim do Switch
 				
 				if(confirmacao.equals("S") || confirmacao.equals("s")) {
