@@ -1,30 +1,26 @@
 package sistemaPagamentoTransporte;
 
-import java.time.LocalDateTime;
+import java.time.*;
 
 public class Boleto {
 	
 	//****************************************** ATRIBUTOS ******************************************//
 
 	private int idBoleto;
-	private LocalDateTime dataEmissao;
-	private LocalDateTime dataVencimento;
-	private LocalDateTime valorCobrado;
-	private LocalDateTime dataPagamento;
-	private LocalDateTime valorPago; 
+	private LocalDate dataEmissao;
+	private LocalDate dataVencimento;
+	private Double valorCobrado;
+	private Double valorPago; 
 	private boolean status;
 	
 	//****************************************** CONSTRUTORES ******************************************//	
 	
-	public Boleto(int idBoleto, LocalDateTime dataEmissao, LocalDateTime dataReferencia,
-			LocalDateTime dataProcessamento, LocalDateTime dataVencimento, LocalDateTime valorCobrado,
-			LocalDateTime dataPagamento, LocalDateTime valorPago, boolean status) {
+	public Boleto(int idBoleto, LocalDate dataEmissao, LocalDate dataVencimento, Double valorCobrado, Double valorPago, boolean status) {
 		super();
 		this.idBoleto = idBoleto;
 		this.dataEmissao = dataEmissao;
 		this.dataVencimento = dataVencimento;
 		this.valorCobrado = valorCobrado;
-		this.dataPagamento = dataPagamento;
 		this.valorPago = valorPago;
 		this.status = status;
 	}
@@ -39,43 +35,35 @@ public class Boleto {
 		this.idBoleto = idBoleto;
 	}
 
-	public LocalDateTime getDataEmissao() {
+	public LocalDate getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(LocalDateTime dataEmissao) {
+	public void setDataEmissao(LocalDate dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 
-	public LocalDateTime getDataVencimento() {
+	public LocalDate getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(LocalDateTime dataVencimento) {
+	public void setDataVencimento(LocalDate dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public LocalDateTime getValorCobrado() {
+	public Double getValorCobrado() {
 		return valorCobrado;
 	}
 
-	public void setValorCobrado(LocalDateTime valorCobrado) {
+	public void setValorCobrado(Double valorCobrado) {
 		this.valorCobrado = valorCobrado;
 	}
 
-	public LocalDateTime getDataPagamento() {
-		return dataPagamento;
-	}
-
-	public void setDataPagamento(LocalDateTime dataPagamento) {
-		this.dataPagamento = dataPagamento;
-	}
-
-	public LocalDateTime getValorPago() {
+	public Double getValorPago() {
 		return valorPago;
 	}
 
-	public void setValorPago(LocalDateTime valorPago) {
+	public void setValorPago(Double valorPago) {
 		this.valorPago = valorPago;
 	}
 

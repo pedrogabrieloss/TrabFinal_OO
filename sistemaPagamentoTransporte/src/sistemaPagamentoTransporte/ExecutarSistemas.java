@@ -97,7 +97,6 @@ public class ExecutarSistemas {
 								
 								switch(escolhaTarefa) {
 								case 1:
-									
 									opSis.get(aux).criaInfraestrutura();
 									break;
 									
@@ -143,12 +142,10 @@ public class ExecutarSistemas {
 								
 								switch(escolhaTarefa) {
 								case 1:
-									
 									linha.add(opSis.get(aux).criaLinha());
 									break;
 									
 								case 2:
-									
 									opSis.get(aux).alteraAtributoLinha(linha);
 									break;
 								
@@ -207,7 +204,7 @@ public class ExecutarSistemas {
 									
 								case 4:
 									
-									//opSis.get(aux).fazContrato();   ****************    ATENÇÃO!!!! MÉTODO AINDA NÃO IMPLEMENTADO   ***************
+									//opSis.get(aux).fazContrato();  
 									break;
 									
 								default:
@@ -261,11 +258,10 @@ public class ExecutarSistemas {
 									break;
 									
 								case 4:
-									
 									opSis.get(aux).addSaldo(bilhete);
 									break;
-								case 5:
 									
+								case 5:
 									opSis.get(aux).consultaBilhete(bilhete);
 									break;
 									

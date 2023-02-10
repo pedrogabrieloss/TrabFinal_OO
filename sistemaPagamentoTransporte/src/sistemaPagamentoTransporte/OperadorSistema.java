@@ -266,9 +266,11 @@ public class OperadorSistema {
 				flag = 1;
 				
 				do {
-					System.out.printf("%nEscolha um valor para alterar algum atributo ou [0] para SAIR.%n[1] CODIGO.   (Atual: %d).%n[2] EMPRESAS AUTORIZADAS a operar essa linha.   (Atual: %s)."
-							+ "%n[3] TARIFA.   (Atual: %.2f).%n", linha.get(i).getCodigo(), linha.get(i).getEmpresasAutorizadas(), linha.get(i).getTarifa());
-					System.out.printf("[4] TRAJETO.    (Atual: " + Arrays.toString(linha.get(i).getTrajeto().toArray()).replaceAll("[\\[\\]]", "") + ").%n");
+					System.out.printf("%nEscolha um valor para alterar algum atributo ou [0] para SAIR.%n[1] CODIGO.   (Atual: %d).%n"
+							+ "[2] EMPRESAS AUTORIZADAS a operar essa linha.   (Atual: %s).%n[3] TARIFA.   (Atual: %.2f).%n", 
+							linha.get(i).getCodigo(), linha.get(i).getEmpresasAutorizadas(), linha.get(i).getTarifa());
+					System.out.printf("[4] TRAJETO.    (Atual: " + Arrays.toString(linha.get(i).getTrajeto().toArray()).replaceAll(""
+							+ "[\\[\\]]", "") + ").%n");
 					escolha = input.nextInt();
 					
 					switch(escolha) {
@@ -328,7 +330,50 @@ public class OperadorSistema {
 	
 	// PENSAR NO MÉTODO consultaFinanca()
 	
-	// PENSAR NO MÉTODO fazContrato()
+	public Contrato fazContrato(){
+		
+		//************************ VARIÁVEIS LOCAIS ************************//
+		String cnpjEmp, tipoVeic;
+		int qntdVeic, anos;
+		double valorCont, numCont;
+		
+		//*********** OBTER AS INFORMAÇÕES DA NOVA INFRAESTRUTURA ***********//
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o numero do Contrato.%n");
+		numCont = input.nextDouble();
+		
+		input.nextLine(); // Para limpar o Scanner
+		
+		System.out.printf("%nDigite o CNPJ da Empresa.%n");
+		cnpjEmp = input.nextLine();
+		
+		System.out.printf("%nDigite o valor do Contrato.%n");
+		valorCont = input.nextDouble();
+		
+		System.out.printf("%nDigite o tempo de vigencia do Contrato (em anos).%n");
+		anos = input.nextInt();
+				
+		System.out.printf("%nDigite o tipo de veiculo alvo do Contrato.%n");
+		tipoVeic = input.nextLine();
+		
+		System.out.printf("%nDigite a quantidade contratual de veiculos da frota.%n");
+		qntdVeic = input.nextInt();
+		
+		// Criando um objeto Contrato
+		
+		Contrato cont = new Contrato(cnpjEmp, tipoVeic, qntdVeic, numCont, valorCont, anos);
+		
+		System.out.printf("%nContrato estabelecido com sucesso!%nNumero do Contrato: %.0f.%nCNPJ da Empresa: %s.%n"
+				+ "Valor: %.2f.%nTipo de veiculo: %s.%nQuantida de veiculos da frota: %d.%n",
+				cont.getNumContrato(), cont.getCnpjEmpresa(), cont.getValorContrato(), cont.getTipoVeiculo(), cont.getQntdVeiculos());
+		
+		System.out.printf("Data de vencimento: %d/%d/%d", cont.getDataVencimento().getDayOfMonth(), 
+				cont.getDataVencimento().getMonthValue(), cont.getDataVencimento().getYear());
+		
+		return cont;	
+	}
 	
 	/*public Usuario cadastraUsuario() {
 		
