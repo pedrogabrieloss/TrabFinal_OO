@@ -5,36 +5,34 @@ import java.time.*;
 
 public class Contrato {
 
-	
 //****************************************** ATRIBUTOS ******************************************//
-	private String nomeEmpresa, tipoVeiculo;
+	private String cnpjEmpresa, tipoVeiculo;
 	private int qntdVeiculos;
 	private double numContrato, valorContrato;
 	private LocalDate dataInicio, dataVencimento;
 	
 //****************************************** CONSTRUTORES ******************************************//
 	
-	Contrato(String nE, String tV, int qntdV, double numC, double vC, int anos) {
+	Contrato(String cnpjE, String tV, int qntdV, double numC, double vC, int anos) {
 		
-		this.nomeEmpresa = nE;
+		this.cnpjEmpresa = cnpjE;
 		this.tipoVeiculo =	tV;
 		this.qntdVeiculos = qntdV;
 		this.numContrato = numC;
 		this.valorContrato = vC;
 		this.dataInicio = LocalDate.now();
-		this.dataVencimento = LocalDate.now().plusYears(anos);
-		
+		this.dataVencimento = LocalDate.now().plusYears(anos);	
 	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
 	
-	public String getNomeEmpresa() {
-		return nomeEmpresa;
+	public String getCnpjEmpresa() {
+		return cnpjEmpresa;
 	}
 
 
-	public void setNomeEmpresa(String nomeEmpresa) {
-		this.nomeEmpresa = nomeEmpresa;
+	public void setCnpjEmpresa(String nomeEmpresa) {
+		this.cnpjEmpresa = nomeEmpresa;
 	}
 
 
@@ -92,6 +90,4 @@ public class Contrato {
 	public void setDataVencimento(LocalDate dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
-
-//******************************************** MÉTODOS ********************************************//
 }
