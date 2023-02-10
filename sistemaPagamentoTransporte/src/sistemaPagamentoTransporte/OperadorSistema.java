@@ -87,6 +87,8 @@ public class OperadorSistema {
 		int flag = 0;
 		String confirmacao;
 		
+		//************************ EXECUÇÃO ************************//
+		
 		Scanner input = new Scanner(System.in);
 
 		System.out.printf("Tamanho do vetor infra e de %d", infra.size());
@@ -447,7 +449,7 @@ public class OperadorSistema {
 			System.out.printf("Bilhete nao encontrado!");
 	}
 	
-	/*public void addSaldo(ArrayList<Bilhete> bilhete) {
+	public void addSaldo(ArrayList<BilheteUnico> bilhete) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int i;
@@ -456,7 +458,9 @@ public class OperadorSistema {
 		String confirmacao;
 		
 		// *********** EXECUÇÃO *********** //
-		System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
+		
+		Scanner input = new Scanner(System.in);
+		//System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
 		
 		System.out.printf("%nDigite o codigo do Bilhete a ser recarregado.%n");
 		codigo = input.nextDouble();
@@ -466,11 +470,11 @@ public class OperadorSistema {
 
 				flag = 1;
 				
-				System.out.printf("Qual o valor da recarga?%n");
+				System.out.printf("%nQual o valor da recarga?%n");
 				recarga = input.nextDouble();
 				
-				System.out.printf("Deseja realmente adicionar %d ao bilhete abaixo?%n", recarga);
-				System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %d.%n", bilhete.get(i).getCodigo(), 
+				System.out.printf("%nDeseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
+				System.out.printf("Codigo: %.0f.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
 						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
 				System.out.printf("%n[S] Sim%n[N] Nao.%n");
 				input.nextLine(); // Para limpar o Scanner
@@ -479,18 +483,47 @@ public class OperadorSistema {
 				if(confirmacao.equals("S") || confirmacao.equals("s")) {
 					bilhete.get(i).setSaldo(bilhete.get(i).getSaldo() + recarga);
 					
-					System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %d.%n", bilhete.get(i).getSaldo());
+					System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %.2f.%n", bilhete.get(i).getSaldo());
 				}
 				
 				else {
-					System.out.printf("Operacao cancelada!%nSaldo: %d.%n", bilhete.get(i).getSaldo());
+					System.out.printf("Operacao cancelada!%nSaldo: %.2f.%n", bilhete.get(i).getSaldo());
 				}
 			}
 		}
 		
 		if (flag == 0)
 			System.out.printf("Bilhete nao encontrado!");
-	}*/
+	}
+	
+	public void consultaBilhete(ArrayList<BilheteUnico> bilhete) {
+		
+		// ************************ VARIÁVEIS LOCAIS ************************ //
+		int i;
+		int flag = 0;
+		double codigo;
+		
+		// *********** EXECUÇÃO *********** //
+		
+		Scanner input = new Scanner(System.in);
+		//System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
+		
+		System.out.printf("%nDigite o codigo do Bilhete a ser consultado.%n");
+		codigo = input.nextDouble();
+		
+		for (i = 0; i < bilhete.size(); i++) {			
+			if (codigo == bilhete.get(i).getCodigo()) {
+
+				flag = 1;
+		
+				System.out.printf("Codigo: %.0f.%nTipo: %s.%nSaldo: %.2f.%nSituacao: %s.%n", bilhete.get(i).getCodigo(), 
+						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo(), bilhete.get(i).getStatus());
+			}
+		}
+		
+		if (flag == 0)
+			System.out.printf("Bilhete nao encontrado!");
+	}
 	
 	public Linha criaLinha() {
 		

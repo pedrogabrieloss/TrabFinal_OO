@@ -13,7 +13,7 @@ public class ExecutarSistemas {
 	static ArrayList<Linha> linha = new ArrayList<Linha>();
 	static ArrayList<Usuario> user = new ArrayList<Usuario>();
 	static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
-	
+	static ArrayList<Banco> bancos = new ArrayList<Banco>();
 
 	public static void main(String[] args) {  // MAIN DO PROJETO INTEIRO
 		
@@ -25,6 +25,16 @@ public class ExecutarSistemas {
 		
 		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Usuarios e Bilhetes");
 		opSis.add(OpSis1);
+		
+		BilheteUnico bilhete1 = new BilheteUnico(456654, 20.50, "Especial", "Ativo");
+		bilhete.add(bilhete1);
+		
+		BilheteUnico bilhete2 = new BilheteUnico(789987, 30, "Especial", "Ativo");
+		bilhete.add(bilhete2);
+		
+		BilheteUnico bilhete3 = new BilheteUnico(123321, 120.50, "Especial", "Ativo");
+		bilhete.add(bilhete3);
+		
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -215,7 +225,7 @@ public class ExecutarSistemas {
 							boolean existenciaGerenteUsuarioBilhete;
 							existenciaGerenteUsuarioBilhete = false;
 							
-							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Usuarios e Bilhetes"
+							for (aux = 0; aux < opSis.size(); aux++) {	//Verificar se já existe um operador do sistema com o cargo "Gerente de Usuarios e Bilhetes"
 								if (opSis.get(aux).getCargo().equals("Gerente de Usuarios e Bilhetes")) {
 									
 									existenciaGerenteUsuarioBilhete = true; // Se já existir, existenciaGerenteUsuarioBilhete = true
@@ -247,16 +257,16 @@ public class ExecutarSistemas {
 									break;
 									
 								case 3:
-									opSis.get(aux).cancelaBilheteUnico(bilhete);  // PAREI AQUI
+									opSis.get(aux).cancelaBilheteUnico(bilhete);
 									break;
 									
 								case 4:
 									
-									//opSis.get(aux).addSaldo(bilhete)
+									opSis.get(aux).addSaldo(bilhete);
 									break;
 								case 5:
 									
-									//opSis.get(aux).consultaBilhete(bilhete)
+									opSis.get(aux).consultaBilhete(bilhete);
 									break;
 									
 								default:
@@ -291,5 +301,3 @@ public class ExecutarSistemas {
 	}
 
 }
-
-//Teste git 
