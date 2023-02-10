@@ -5,23 +5,20 @@ import java.time.*;
 public class Usuario extends Pessoa {
 	
     //************** ATRIBUTOS **************//
-    private int cpf;
+    private String cpf;
     private LocalDate dataDeNascimento;
     
     //************** CONSTRUTORES **************//
-    public Usuario(int cpf, String nome, String endereço, int contato, String email, char sexo) {
+    public Usuario(String cpf, String nome, String endereço, int contato, String email, char sexo) {
         super(nome, endereço, contato, email, sexo);
         this.cpf = cpf;
         this.dataDeNascimento = LocalDate.now();   
     }
     
     //************** SETTERS E GETTERS **************//
-    public void setCpf(int cpf) {
-        if( (cpf <= 10) || (cpf >= 12)) {
-            throw new IllegalArgumentException("CPF invalido");
-        }
-        else 
-            this.cpf = cpf;
+    public void setCpf(String cpf) {
+        
+    	this.cpf = cpf;
     }
     
     public void setDataDeNascimento(int diaN, int mesN, int anoN) {
@@ -41,7 +38,7 @@ public class Usuario extends Pessoa {
         this.dataDeNascimento = dataN;      
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return this.cpf;
     }
 
