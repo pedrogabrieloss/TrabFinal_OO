@@ -10,9 +10,9 @@ public class ExecutarSistemas {
 	static ArrayList<OperadorSistema> opSis = new ArrayList<OperadorSistema>();
 	static ArrayList<Infraestrutura> infra = new ArrayList<Infraestrutura>();
 	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
-	//static ArrayList<Linha> linha = new ArrayList<Linha>();
-	//static ArrayList<Usuario> user = new ArrayList<Usuario>();
-	//static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
+	static ArrayList<Linha> linha = new ArrayList<Linha>();
+	static ArrayList<Usuario> user = new ArrayList<Usuario>();
+	static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
 	
 
 	public static void main(String[] args) {  // MAIN DO PROJETO INTEIRO
@@ -23,7 +23,7 @@ public class ExecutarSistemas {
 		
 		// ************************    Execução    ************************ //
 		
-		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Infraestrutura");
+		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Usuarios e Bilhetes");
 		opSis.add(OpSis1);
 		
 		Scanner input = new Scanner(System.in);
@@ -64,7 +64,7 @@ public class ExecutarSistemas {
 							boolean existenciaGerenteInfra;
 							existenciaGerenteInfra = false;
 							
-							for (aux = 0; aux < opSis.size(); aux++) {	// 	Verificar se já existe um operador do sistema com o cargo "Gerente de Infraestrutura"
+							for (aux = 0; aux < opSis.size(); aux++) {	// Verificar se já existe um operador do sistema com o cargo "Gerente de Infraestrutura"
 								if (opSis.get(aux).getCargo().equals("Gerente de Infraestrutura")) {
 									
 									existenciaGerenteInfra = true; // Se já existir, existenciaGerenteInfra = true
@@ -128,18 +128,18 @@ public class ExecutarSistemas {
 							}
 							
 							else {
-								System.out.printf("Que tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR uma Linha.%n[0] Sair.%n");
+								System.out.printf("%nQue tarefa deseja realizar?%n[1] CRIAR Linha.%n[2] MODIFICAR / CONSULTAR uma Linha.%n[0] Sair.%n");
 								escolhaTarefa = input.nextInt();
 								
 								switch(escolhaTarefa) {
 								case 1:
 									
-									//opSis.get(aux).criaLinha();
+									linha.add(opSis.get(aux).criaLinha());
 									break;
 									
 								case 2:
 									
-									//opSis.get(aux).alteraAtributoLinha(linha);
+									opSis.get(aux).alteraAtributoLinha(linha);
 									break;
 								
 								default:
@@ -233,29 +233,30 @@ public class ExecutarSistemas {
 							}
 							
 							else {
-								System.out.printf("Que tarefa deseja realizar?%n[1] CADASTRAR Usuario.%n[2] CRIAR Bilhete Unico.%n[3] CANCELAR "
-										+ "Bilhete Unico.%n[4] ADICIONAR RECARGA ao Bilhete Unico.%n[0] Sair.%n");	
+								System.out.printf("%nQue tarefa deseja realizar?%n[1] CADASTRAR Usuario.%n[2] CRIAR Bilhete Unico.%n[3] CANCELAR "
+										+ "Bilhete Unico.%n[4] ADICIONAR RECARGA ao Bilhete Unico.%n[5] CONSULTA Bilhete Unico.%n[0] Sair.%n");	
 								escolhaTarefa = input.nextInt();
 								
 								switch(escolhaTarefa) {
-								case 1:
-									
-									//opSis.get(aux).cadastraUsuario();
+								case 1:	
+									//user.add(opSis.get(aux).cadastraUsuario());  // PROBLEMA COM CPF
 									break;
 									
 								case 2:
-									
-									//opSis.get(aux).criaBilheteUnico();
+									bilhete.add(opSis.get(aux).criaBilheteUnico());
 									break;
 									
 								case 3:
-									
-									//opSis.get(aux).cancelaBilheteUnico(bilhete)
+									opSis.get(aux).cancelaBilheteUnico(bilhete);  // PAREI AQUI
 									break;
 									
 								case 4:
 									
 									//opSis.get(aux).addSaldo(bilhete)
+									break;
+								case 5:
+									
+									//opSis.get(aux).consultaBilhete(bilhete)
 									break;
 									
 								default:

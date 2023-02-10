@@ -51,23 +51,29 @@ public class Pessoa {
              throw new IllegalArgumentException("Número invalido. Digite novamente");
          }
          else 
-             this.contato = contato;
-         
+             this.contato = contato;      
      }
+     
      public void setEmail(String email){
          if( (email.length() < 2)||(email.length() > 50) ){
              throw new IllegalArgumentException("Email invalido. Digite novamente");
          }
          else 
-             this.email = email;
-         
-         
+             this.email = email;  
      }
+     
      public void setSexo(char sexo){ 
-         if ( (sexo!= 'M')&& (sexo != 'F')){
+         if(sexo == 'm') {
+        	 sexo = 'M';
+         }
+         
+         if(sexo == 'f') {
+        	 sexo = 'F';
+         }
+
+    	 if ((sexo!= 'M') && (sexo != 'F')){
                  throw new IllegalArgumentException("Opção inválida. 'M' ou 'F' ");
-        
-    }
+         }
          else 
              this.sexo = sexo; 
      }
