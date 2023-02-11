@@ -1,4 +1,4 @@
-package Transporte;
+package sistemaPagamentoTransporte;
 
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class Funcionario extends Pessoa {
 	 private int matricula;
 	 private String cargo;
 
-	  public Funcionario(int matricula, String cargo, String nome, String endereco, int contato, String email, char sexo) {
+	  public Funcionario(int matricula, String cargo, String nome, String endereco, double contato, String email, char sexo) {
 		super(nome, endereco, contato, email, sexo);
 		this.matricula = matricula;
 		this.cargo = cargo;
@@ -67,7 +67,8 @@ public class Funcionario extends Pessoa {
 
 //*****METODO*****//
 	 public void excluirFuncionario(ArrayList<Funcionario> func) {
-	        int matriculaFunc, flagMatricula, aux1;
+	        int matriculaFunc, aux1;
+	        int flagMatricula = 0;
 	 		String cargo;
 	 		String confirmacao;
 	 		

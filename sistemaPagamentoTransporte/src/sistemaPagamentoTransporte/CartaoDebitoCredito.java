@@ -5,7 +5,7 @@ public class CartaoDebitoCredito {
 
 	//****************************************** ATRIBUTOS ******************************************//
 	
-	private int id;
+	private Double id;
 	private String tipoCartao;
 	private String bandeira;
 	private LocalDate codValidade; 
@@ -15,7 +15,7 @@ public class CartaoDebitoCredito {
 		
 	//****************************************** CONSTRUTORES ******************************************//	
 	
-	public CartaoDebitoCredito(int id, String tipoCartao, String bandeira, int cvv, int codValidade, double limite,
+	public CartaoDebitoCredito(double id, String tipoCartao, String bandeira, int cvv, int codValidade, double limite,
 			boolean situacaoCartao) {
 		super();
 		this.id = id;
@@ -35,11 +35,11 @@ public class CartaoDebitoCredito {
 
 	//*************************************** SETTERS & GETTERS ***************************************//
 	
-	public int getId() {
+	public double getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(double id) {
 		this.id = id;
 	}
 

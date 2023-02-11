@@ -2,35 +2,16 @@ package sistemaPagamentoTransporte;
 
 import java.util.*;
 
-//public class OperadorSistema extends Funcionario {
-public class OperadorSistema {
+public class OperadorSistema extends Funcionario {
 	
 //****************************************** ATRIBUTOS ******************************************//
-	int matricula;
-	String cargo;
 	
 //****************************************** CONSTRUTORES ******************************************//
-	OperadorSistema(int m, String c) {
-		this.matricula = m;
-		this.cargo = c;
+	OperadorSistema(int matricula, String cargo, String nome, String endereco, double contato, String email, char sexo) {
+		super(matricula, cargo, nome, endereco, contato, email, sexo);
 	}
 
 //*************************************** SETTERS & GETTERS ***************************************//
-	public int getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
 	
 //******************************************** MÉTODOS ********************************************//
 

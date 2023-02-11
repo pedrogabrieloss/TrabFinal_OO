@@ -12,18 +12,17 @@ public class ExecutarSistemas {
 	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
 	static ArrayList<Linha> linha = new ArrayList<Linha>();
 	static ArrayList<Usuario> user = new ArrayList<Usuario>();
-	//static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
 	static ArrayList<Banco> bancos = new ArrayList<Banco>();
 
 	public static void main(String[] args) {  // MAIN DO PROJETO INTEIRO
 		
 		// ************************    Variaveis    ************************ //
 		
-		int escolhaInterface, escolhaAmbiente, escolhaTarefa, aux;	
+		int escolhaInterface, escolhaBanco, escolhaAmbiente, escolhaTarefa, aux, codBanco;	
 		
 		// ************************    Execução    ************************ //
 		
-		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Usuarios e Bilhetes");
+		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Usuarios e Bilhetes", "Junior", "QN 12 B - Riacho", 61983652195.0, "junior@gmail", 'M');
 		opSis.add(OpSis1);
 		
 		Usuario user1 = new Usuario("06138356110", "Pedro Santos", "QN 12 A - Riacho", 61983652195.0, "pedro@santos", 'M');
@@ -32,15 +31,14 @@ public class ExecutarSistemas {
 		Usuario user2 = new Usuario("06301763107", "Vitor Alfredo", "QNN 35 - Ceilondres", 61998607276.0, "vitor@alfredo", 'M');
 		user.add(user2);
 		
-		/*BilheteUnico bilhete1 = new BilheteUnico(456654, 20.50, "Especial", "Ativo");
-		bilhete.add(bilhete1);
+		Banco bb = new Banco("Banco do Brasil", 123);
+		bancos.add(bb);
 		
-		BilheteUnico bilhete2 = new BilheteUnico(789987, 30, "Especial", "Ativo");
-		bilhete.add(bilhete2);
+		Banco brb = new Banco("BRB", 113);
+		bancos.add(brb);
 		
-		BilheteUnico bilhete3 = new BilheteUnico(123321, 120.50, "Especial", "Ativo");
-		bilhete.add(bilhete3);*/
-		
+		Banco caixa = new Banco("Caixa", 223);
+		bancos.add(caixa);
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -64,6 +62,40 @@ public class ExecutarSistemas {
 				break;
 				
 			case 2:
+				do {
+					System.out.printf("%nQual banco deseja realizar sua operacao?%n[1] Banco do Brasil.%n[2] BRB.%n[3] Caixa.%n ");
+					escolhaBanco = input.nextInt();
+					
+					//String confirmaBanco; 
+					
+					if (escolhaBanco == 1) {
+						//System.out.printf("%nDeseja realizar essa operacao pelo banco do Brasil? [S] ou [N]: ");
+						//confirmaBanco = input.next();
+						
+						codBanco = 123;
+					} 
+					else if (escolhaBanco == 2) {
+						//System.out.printf("%nDeseja realizar essa operacao pelo BRB? [S] ou [N]: ");
+						//confirmaBanco = input.next();
+						
+						codBanco = 113;
+					} 
+					else { 
+						//System.out.printf("%nDeseja realizar essa operacao pela Caixa? [S] OU [N]: ");
+						//confirmaBanco = input.next();
+						
+						codBanco = 223;
+					}
+					
+					for (aux = 0; aux < bancos.size(); aux++) {	// Verificar se já existe um banco"
+						if (codBanco == bancos.get(aux).getCodigo()) {
+							
+							bancos.get(aux).comprovantePagamento(user);
+							
+							break; // O break é porque ao encontrar o primeiro o banco o for já é parado
+						}
+					}
+				}while(escolhaBanco != 0);
 				
 				break;
 				

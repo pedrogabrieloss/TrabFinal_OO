@@ -12,7 +12,7 @@ public class Banco {
 	
 	
 	//****************************************** CONSTRUTORES ******************************************//		
-	private Banco(String nome, int codigo) {
+	public Banco(String nome, int codigo) {
 		this.nome = nome;
 		this.codigo = codigo;
 		
@@ -20,30 +20,31 @@ public class Banco {
 	
 	//*************************************** SETTERS & GETTERS ***************************************//
 
-	private String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
-	private void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	private int getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	private void setCodigo(int codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 	
 	//******************************************** MÉTODOS ********************************************//	
-	public void comprovantePagamento(ArrayList<BilheteUnico> bilhete) {
+	public void comprovantePagamento(ArrayList<Usuario> user) {
 	 
 	
-		int tamanho, i, formaPg, anoVc, mesVc;
+		int i, formaPg, anoVc, mesVc;
 		int flag = 0;
+		int flagCPF = 0;
 		double codigo, recarga;
-		String confirmacao; 
+		String confirmacao, cpf; 
 		confirmacao = "N";
 		boolean status;
 		LocalDate dataEmissao, dataVencimento;
@@ -56,106 +57,86 @@ public class Banco {
 		
 		Scanner input=new Scanner(System.in);
 		
-		System.out.printf("%nDigite o codigo do Bilhete a ser recarregado.%n");
-		codigo = input.nextDouble();
+		System.out.printf("%nDigite o CPF do Usuario proprietario do Bilhete Unico a ser recarregado.%n");
+		cpf = input.nextLine();
 		
-		for (i = 0; i < 10; i++) {			
-			if (codigo == bilhete.get(i).getCodigo()) {
-				flag = 1;
+		for (i = 0; i < user.size(); i++) {			
+			if (cpf.equals(user.get(i).getCpf())) {
+				flagCPF = 1;
 				
-				System.out.printf("Qual o valor da recarga?%n");
+				System.out.printf("%nQual o valor da recarga?%n");
 				recarga = input.nextDouble();
 				
-				System.out.printf("Qual a forma de pagamento?%n[1] Cartao de credito ou debito%n[2] PIX%n[3] Boleto%n[0] Sair");
+				System.out.printf("%nQual a forma de pagamento?%n[1] Cartao de credito ou debito%n[2] PIX%n[3] Boleto%n[0] Sair%n");
 				formaPg= input.nextInt();
 				
 				switch (formaPg) {
-					    case 1:
-					    	CartaoDebitoCredito cartao = new CartaoDebitoCredito();
-					    	
-						    System.out.printf("Digite o numero do cartao");
-						    cartao.setId(input.nextInt());
-						    
-						    System.out.printf("Digite o mes de validade do cartao");							    
-						    mesVc = input.nextInt();
-						    
-						    System.out.printf("Digite o ano de validade do cartao");							    
-						    anoVc = input.nextInt();
-						    
-						    cartao.setCodValidade(mesVc, anoVc);
-						    
-						    System.out.printf("Digite o Codigo de segurança");
-						    cartao.setCvv(input.nextInt());
-						    
-						    System.out.printf("Qual o tipo do cartao?%n[1]Credito%n[2]Debito%n");
-						    cartao.setTipoCartao(input.nextInt()); 
-						    
-						   		    
-						    if (cartao.getLimite()>= recarga) {
-						    	System.out.printf("Deseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
-								System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
-										bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-								System.out.printf("%n[S] Sim%n[N] Nao.%n");
-								input.nextLine(); // Para limpar o Scanner
-								confirmacao = input.nextLine(); 
-						    }
-						    else  {
-						    	System.out.printf("O cartao informado nao possui limite! Operacao cancelada.%n");						    	
-						    }
-						    
-						    break;
-					   
-					    case 2:
-							System.out.printf("Deseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
-							System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
-									bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-							System.out.printf("[S] Sim%n[N] Nao.%n");
-							input.nextLine(); // Para limpar o Scanner
-							confirmacao = input.nextLine();
-												
-					    	System.out.printf("Pagamento realizado com sucesso no valor %d", recarga);							    								    	
-					    	break;
-					    	
-					    case 3:
-							System.out.printf("Deseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
-							System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
-									bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-							System.out.printf("[S] Sim%n[N] Nao.%n");
-							input.nextLine(); // Para limpar o Scanner
-							confirmacao = input.nextLine();
-							
-					    	dataEmissao = LocalDate.now();
-					    	dataVencimento = LocalDate.now().plusDays(5);
-					    	
-					    	System.out.printf("Pagavel em qualquer agencia bancaria.%n");
-					    	System.out.printf("Data de emissao %d / %d / %d.%n", dataEmissao.getDayOfMonth(), dataEmissao.getMonthValue(), dataEmissao.getYear());
-					    	System.out.printf("Data de vencimento %d / %d / %d.%n", dataVencimento.getDayOfMonth(), dataVencimento.getMonthValue(),dataVencimento.getYear());
-					    	System.out.printf("Valor do documento %.2f%n", recarga);
-					    	System.out.printf("Nao receber apos  %d / %d / %d.%n", dataVencimento.getDayOfMonth(), dataVencimento.getMonthValue(),dataVencimento.getYear());
-					
-					    	break;
+				    case 1:
+				    	CartaoDebitoCredito cartao = new CartaoDebitoCredito();
+				    	
+					    System.out.printf("%nDigite o numero do cartao: ");
+					    cartao.setId(input.nextDouble());
 					    
-					    default:
-					      System.out.printf("Escolha uma forma de pagamento");	
-					} // Fim do Switch
+					    System.out.printf("%nDigite o mes de validade do cartao:");							    
+					    mesVc = input.nextInt();
+					    
+					    System.out.printf("%nDigite o ano de validade do cartao: ");							    
+					    anoVc = input.nextInt();
+					    
+					    cartao.setCodValidade(mesVc, anoVc);
+					    
+					    System.out.printf("%nDigite o Codigo de segurança: ");
+					    cartao.setCvv(input.nextInt());
+					    
+					    System.out.printf("%nQual o tipo do cartao?%n[1]Credito%n[2]Debito%n");
+					    cartao.setTipoCartao(input.nextInt()); 
+					    
+					   		    
+					    if (cartao.getLimite()>= recarga) {
+					    	flag = user.get(i).addSaldoBilhete(recarga);
+					    }
+					    else  {
+					    	System.out.printf("O cartao informado nao possui limite! Operacao cancelada.%n");						    	
+					    }
+					    
+					    break;
+				   
+				    case 2:
+				    	flag = user.get(i).addSaldoBilhete(recarga);							    								    	
+				    	break;
+				    	
+				    case 3:		    	
+				    	flag = user.get(i).addSaldoBilhete(recarga);
+						
+				    	dataEmissao = LocalDate.now();
+				    	dataVencimento = LocalDate.now().plusDays(5);
+				    	
+				    	if(flag == 1) {
+					    	System.out.printf("%nPagavel em qualquer agencia bancaria.%n");
+					    	System.out.printf("Data de emissao %d/%d/%d.%n", dataEmissao.getDayOfMonth(), dataEmissao.getMonthValue(), dataEmissao.getYear());
+					    	System.out.printf("Data de vencimento %d/%d/%d.%n", dataVencimento.getDayOfMonth(), dataVencimento.getMonthValue(),dataVencimento.getYear());
+					    	System.out.printf("Valor do documento %.2f%n", recarga);
+					    	System.out.printf("Nao receber apos  %d/%d/%d.%n", dataVencimento.getDayOfMonth(), dataVencimento.getMonthValue(),dataVencimento.getYear());
+				    	}
+				    	
+				    	break;
+				    
+				    default:
+				      System.out.printf("Escolha uma forma de pagamento");	
+				} // Fim do Switch
 				
-				if(confirmacao.equals("S") || confirmacao.equals("s")) {
+				if(flag == 1) {
 					System.out.printf("Codigo de transação:");
 					for (i = 0; i < count; i++) {
 			    	      codBoleto[i] = random.nextInt(max);
 			    	      System.out.printf("%d", codBoleto[i]);	
 					}
-					
-					bilhete.get(i).setSaldo(bilhete.get(i).getSaldo() + recarga);
-				   	System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %.2f.%n", bilhete.get(i).getSaldo());
-				}
-				else {
-					System.out.printf("Operacao cancelada!");
+					System.out.printf("%n%n");
 				}
 			}
 		}
-		if(flag == 0) {
-			System.out.printf("Bilhete nao encontrado!");
-		}
+		
+		if(flagCPF == 0)
+			System.out.printf("CPF nao encontrado!");
 	} 
 }

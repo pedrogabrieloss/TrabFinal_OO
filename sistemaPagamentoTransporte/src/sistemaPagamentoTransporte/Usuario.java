@@ -138,6 +138,52 @@ public class Usuario extends Pessoa {
 			System.out.printf("Bilhete nao encontrado!");
     }
     
+    //
+    
+	public int addSaldoBilhete(double recarga) {
+	    	
+		int i;
+		int flag = 0;
+		double codigo;
+		String confirmacao;
+		
+		Scanner input = new Scanner(System.in);
+    	
+    	System.out.printf("%nDigite o codigo do Bilhete a ser recarregado.%n");
+		codigo = input.nextDouble();
+		
+		for (i = 0; i < bilhete.size(); i++) {			
+			if (codigo == bilhete.get(i).getCodigo()) {
+
+				flag = 1;
+						
+				System.out.printf("%nDeseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
+				System.out.printf("Codigo: %.0f.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
+						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
+				System.out.printf("%n[S] Sim%n[N] Nao.%n");
+				input.nextLine(); // Para limpar o Scanner
+				confirmacao = input.nextLine();
+				
+				if(confirmacao.equals("S") || confirmacao.equals("s")) {
+					bilhete.get(i).setSaldo(bilhete.get(i).getSaldo() + recarga);
+					
+					System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %.2f.%n", bilhete.get(i).getSaldo());
+				}
+				
+				else {
+					System.out.printf("Operacao cancelada!%nSaldo: %.2f.%n", bilhete.get(i).getSaldo());
+				}
+			}
+		}
+		
+		if (flag == 0)
+			System.out.printf("Bilhete nao encontrado!");
+    
+		return flag;
+	}
+    
+    //
+    
 public void consBilhete() {
     	
 		int i;
