@@ -427,155 +427,130 @@ public class OperadorSistema {
 		return user;
 	}
 	
-	public BilheteUnico criaBilheteUnico() {
+	public void criaBilheteUnico(ArrayList<Usuario> user) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
-		String tipo, status;
+		String tipo, status, cpf;
 		double codigo, saldo;
+		int i;
+		int flag = 0;
+		ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
 		
 		// *********** EXECUÇÃO *********** //
 		Scanner input = new Scanner(System.in);
+		//
+		System.out.printf("%nDigite o CPF do Usuario proprietario do novo Bilhete Unico.%n");
+		cpf = input.nextLine();
 		
-		// TODO BILHETE UNICO DEVE PERTENCER A UM USUARIO. LOGO DEVERIA PERGUNTAR A QUEM ESSE BILHETE PERTENCE
-		
-		System.out.printf("%nInsira o tipo do Bilhete Unico a ser criado.%n"); // Talvez usar int e fazer essa pergunta como múltipla escolha
-		tipo = input.nextLine();
-		
-		System.out.printf("%nInsira o codigo do Bilhete Unico.%n");
-		codigo = input.nextDouble();
-		
-		status = "Ativo";
-		
-		System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
-		saldo = input.nextDouble();
-		
-		BilheteUnico bilhete = new BilheteUnico(codigo, saldo, tipo, status);
-		
-		System.out.printf("%nBilhete criado com sucesso!%n");	
-		
-		System.out.printf("Codigo: %.0f.%nSaldo: %.2f.%nTipo: %s.%n", bilhete.getCodigo(), bilhete.getSaldo(), bilhete.getTipo());	
-		
-		return bilhete;
+		for (i = 0; i < user.size(); i++) {			
+			if (cpf.equals(user.get(i).getCpf())) {
+				flag = 1;
+
+				System.out.printf("%nInsira o tipo do Bilhete Unico a ser criado.%n"); // Talvez usar int e fazer essa pergunta como múltipla escolha
+				tipo = input.nextLine();
+				
+				System.out.printf("%nInsira o codigo do Bilhete Unico.%n");
+				codigo = input.nextDouble();
+				
+				status = "Ativo";
+				
+				System.out.printf("%nInsira o valor a ser adicionado ao Bilhete.%n");
+				saldo = input.nextDouble();
+				
+				bilhete.add(user.get(i).atrelaBilheteUsuario(codigo, saldo, tipo, status));
+				
+				System.out.printf("%nBilhete criado com sucesso!%n");	
+				
+				System.out.printf("Codigo: %.0f.%nSaldo: %.2f.%nTipo: %s.%n", bilhete.get(0).getCodigo(), bilhete.get(0).getSaldo(), bilhete.get(0).getTipo());
+			}
+		}
+		if (flag == 0)
+			System.out.printf("%nCPF nao encontrado!.%n");
 	}
 	
-	public void cancelaBilheteUnico(ArrayList<BilheteUnico> bilhete) {
+	public void cancelaBilheteUnico(ArrayList<Usuario> user) {
+		
+		// ************************ VARIÁVEIS LOCAIS ************************ //
+		int i, aux;
+		int flagCPF = 0;
+		int flagBilhete = 0;
+		double codigo;
+		String confirmacao, cpf;
+		
+		// *********** EXECUÇÃO *********** //
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o CPF do Usuario proprietario do Bilhete Unico a ser cancelado.%n");
+		cpf = input.nextLine();
+		
+		for (i = 0; i < user.size(); i++) {			
+			if (cpf.equals(user.get(i).getCpf())) {
+				flagCPF = 1;
+				
+				System.out.printf("%nDigite o codigo do Bilhete Unico a ser cancelado.%n");
+				codigo = input.nextDouble();
+
+				user.get(i).removeBilhete(codigo);
+			}
+		}
+		
+		if(flagCPF == 0)
+			System.out.printf("CPF nao encontrado!");
+	}
+	
+	public void addSaldo(ArrayList<Usuario> user) {
+		
+		// ************************ VARIÁVEIS LOCAIS ************************ //
+		int i, aux;
+		int flagCPF = 0;
+		int flagBilhete = 0;
+		String confirmacao, cpf;
+		
+		// *********** EXECUÇÃO *********** //
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%nDigite o CPF do Usuario proprietario do Bilhete Unico a ser recarregado.%n");
+		cpf = input.nextLine();
+		
+		for (i = 0; i < user.size(); i++) {			
+			if (cpf.equals(user.get(i).getCpf())) {
+				flagCPF = 1;
+				
+				user.get(i).addSaldoBilhete();
+			}
+		}
+		
+		if(flagCPF == 0)
+			System.out.printf("CPF nao encontrado!");
+	}
+	
+	public void consultaBilhete(ArrayList<Usuario> user) {
 		
 		// ************************ VARIÁVEIS LOCAIS ************************ //
 		int i;
 		int flag = 0;
 		double codigo;
-		String confirmacao;
+		String cpf;
 		
 		// *********** EXECUÇÃO *********** //
 		
 		Scanner input = new Scanner(System.in);
-		//System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
 		
-		System.out.printf("%nDigite o codigo do Bilhete a ser cancelado.%n");
-		codigo = input.nextDouble();
+		System.out.printf("%nDigite o CPF do Usuario proprietario do Bilhete Unico a ser consultado.%n");
+		cpf = input.nextLine();
 		
-		for (i = 0; i < bilhete.size(); i++) {			
-			if (codigo == bilhete.get(i).getCodigo()) {
-
+		for (i = 0; i < user.size(); i++) {			
+			if (cpf.equals(user.get(i).getCpf())) {
 				flag = 1;
 				
-				System.out.printf("Deseja realmente cancelar o Bilhete abaixo?%n");
-				System.out.printf("Codigo: %d.%nTipo: %s.%nSaldo: %d.%n", bilhete.get(i).getCodigo(), 
-						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-				System.out.printf("%n[S] Sim%n[N] Nao.%n");
-				input.nextLine(); // Para limpar o Scanner
-				confirmacao = input.nextLine();
-				
-				if(confirmacao.equals("S") || confirmacao.equals("s")) {
-					System.out.printf("Bilhete %.0f excluida com sucesso!%n", bilhete.get(i).getCodigo());
-					
-					bilhete.remove(i);
-				}
-				else {
-					System.out.printf("Operacao abortada!%n");
-				}
-				break;
+				user.get(i).consBilhete();
 			}
 		}
 		
-		if (flag == 0)
-			System.out.printf("Bilhete nao encontrado!");
-	}
-	
-	public void addSaldo(ArrayList<BilheteUnico> bilhete) {
-		
-		// ************************ VARIÁVEIS LOCAIS ************************ //
-		int i;
-		int flag = 0;
-		double codigo, recarga;
-		String confirmacao;
-		
-		// *********** EXECUÇÃO *********** //
-		
-		Scanner input = new Scanner(System.in);
-		//System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
-		
-		System.out.printf("%nDigite o codigo do Bilhete a ser recarregado.%n");
-		codigo = input.nextDouble();
-		
-		for (i = 0; i < bilhete.size(); i++) {			
-			if (codigo == bilhete.get(i).getCodigo()) {
-
-				flag = 1;
-				
-				System.out.printf("%nQual o valor da recarga?%n");
-				recarga = input.nextDouble();
-				
-				System.out.printf("%nDeseja realmente adicionar %.2f ao bilhete abaixo?%n", recarga);
-				System.out.printf("Codigo: %.0f.%nTipo: %s.%nSaldo: %.2f.%n", bilhete.get(i).getCodigo(), 
-						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo());
-				System.out.printf("%n[S] Sim%n[N] Nao.%n");
-				input.nextLine(); // Para limpar o Scanner
-				confirmacao = input.nextLine();
-				
-				if(confirmacao.equals("S") || confirmacao.equals("s")) {
-					bilhete.get(i).setSaldo(bilhete.get(i).getSaldo() + recarga);
-					
-					System.out.printf("Valor adicionado com sucesso!%nNovo saldo: %.2f.%n", bilhete.get(i).getSaldo());
-				}
-				
-				else {
-					System.out.printf("Operacao cancelada!%nSaldo: %.2f.%n", bilhete.get(i).getSaldo());
-				}
-			}
-		}
-		
-		if (flag == 0)
-			System.out.printf("Bilhete nao encontrado!");
-	}
-	
-	public void consultaBilhete(ArrayList<BilheteUnico> bilhete) {
-		
-		// ************************ VARIÁVEIS LOCAIS ************************ //
-		int i;
-		int flag = 0;
-		double codigo;
-		
-		// *********** EXECUÇÃO *********** //
-		
-		Scanner input = new Scanner(System.in);
-		//System.out.printf("Tamanho do vetor bilhete e de %d", bilhete.size());
-		
-		System.out.printf("%nDigite o codigo do Bilhete a ser consultado.%n");
-		codigo = input.nextDouble();
-		
-		for (i = 0; i < bilhete.size(); i++) {			
-			if (codigo == bilhete.get(i).getCodigo()) {
-
-				flag = 1;
-		
-				System.out.printf("Codigo: %.0f.%nTipo: %s.%nSaldo: %.2f.%nSituacao: %s.%n", bilhete.get(i).getCodigo(), 
-						bilhete.get(i).getTipo(), bilhete.get(i).getSaldo(), bilhete.get(i).getStatus());
-			}
-		}
-		
-		if (flag == 0)
-			System.out.printf("Bilhete nao encontrado!");
+		if(flag == 0)
+			System.out.printf("CPF nao encontrado!");
 	}
 	
 	public Linha criaLinha() {
