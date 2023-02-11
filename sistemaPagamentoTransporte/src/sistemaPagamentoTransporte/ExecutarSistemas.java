@@ -237,7 +237,7 @@ public class ExecutarSistemas {
 									
 								case 3:
 									
-									//opSis.get(aux).consultaFinanca();   ****************    ATENÇÃO!!!! MÉTODO AINDA NÃO IMPLEMENTADO   ***************
+									//opSis.get(aux).consultaFinanca(emp);   ****************    ATENÇÃO!!!! MÉTODO AINDA NÃO IMPLEMENTADO   ***************
 									break;
 									
 								case 4:

@@ -309,7 +309,31 @@ public class OperadorSistema extends Funcionario {
 			System.out.printf("%nLinha nao encontrada!%n");
 	}
 	
-	// PENSAR NO MÉTODO consultaFinanca()
+	public void consultaFinanca(ArrayList<Empresa> emp) {
+	
+		// ************************ VARIÁVEIS LOCAIS ************************ //
+				String cnpj;
+				int i;
+				int flag = 0;
+				ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
+				
+				// *********** EXECUÇÃO *********** //
+				Scanner input = new Scanner(System.in);
+				//
+				System.out.printf("%nDigite o CNPJ da Empresa: ");
+				cnpj = input.nextLine();
+				
+				for (i = 0; i < emp.size(); i++) {			
+					if (cnpj.equals(emp.get(i).getCnpj())) {
+						flag = 1;
+
+						emp.get(i).getFin().fazRelatorio();						
+						System.out.printf("Codigo: %.0f.%nSaldo: %.2f.%nTipo: %s.%n", bilhete.get(0).getCodigo(), bilhete.get(0).getSaldo(), bilhete.get(0).getTipo());
+					}
+				}
+				if (flag == 0)
+					System.out.printf("%nCPF nao encontrado!.%n");
+	}
 	
 	public Contrato fazContrato(){
 		
