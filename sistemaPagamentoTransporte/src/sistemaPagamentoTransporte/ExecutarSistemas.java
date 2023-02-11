@@ -12,7 +12,7 @@ public class ExecutarSistemas {
 	//static ArrayList<Empresa> emp = new ArrayList<Empresa>();
 	static ArrayList<Linha> linha = new ArrayList<Linha>();
 	static ArrayList<Usuario> user = new ArrayList<Usuario>();
-	static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
+	//static ArrayList<BilheteUnico> bilhete = new ArrayList<BilheteUnico>();
 	static ArrayList<Banco> bancos = new ArrayList<Banco>();
 
 	public static void main(String[] args) {  // MAIN DO PROJETO INTEIRO
@@ -26,14 +26,20 @@ public class ExecutarSistemas {
 		OperadorSistema OpSis1 = new OperadorSistema(123654, "Gerente de Usuarios e Bilhetes");
 		opSis.add(OpSis1);
 		
-		BilheteUnico bilhete1 = new BilheteUnico(456654, 20.50, "Especial", "Ativo");
+		Usuario user1 = new Usuario("06138356110", "Pedro Santos", "QN 12 A - Riacho", 61983652195.0, "pedro@santos", 'M');
+		user.add(user1);
+		
+		Usuario user2 = new Usuario("06301763107", "Vitor Alfredo", "QNN 35 - Ceilondres", 61998607276.0, "vitor@alfredo", 'M');
+		user.add(user2);
+		
+		/*BilheteUnico bilhete1 = new BilheteUnico(456654, 20.50, "Especial", "Ativo");
 		bilhete.add(bilhete1);
 		
 		BilheteUnico bilhete2 = new BilheteUnico(789987, 30, "Especial", "Ativo");
 		bilhete.add(bilhete2);
 		
 		BilheteUnico bilhete3 = new BilheteUnico(123321, 120.50, "Especial", "Ativo");
-		bilhete.add(bilhete3);
+		bilhete.add(bilhete3);*/
 		
 		
 		Scanner input = new Scanner(System.in);
@@ -250,19 +256,19 @@ public class ExecutarSistemas {
 									break;
 									
 								case 2:
-									bilhete.add(opSis.get(aux).criaBilheteUnico());
+									opSis.get(aux).criaBilheteUnico(user);
 									break;
 									
 								case 3:
-									opSis.get(aux).cancelaBilheteUnico(bilhete);
+									opSis.get(aux).cancelaBilheteUnico(user);
 									break;
 									
 								case 4:
-									opSis.get(aux).addSaldo(bilhete);
+									opSis.get(aux).addSaldo(user);
 									break;
 									
 								case 5:
-									opSis.get(aux).consultaBilhete(bilhete);
+									opSis.get(aux).consultaBilhete(user);
 									break;
 									
 								default:

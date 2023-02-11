@@ -17,8 +17,12 @@ public class BilheteUnico {
         this.status = status;
     }
     
-    
-    //************** SETTERS E GETTERS **************//
+    public BilheteUnico() {
+		super();
+	}
+
+
+	//************** SETTERS E GETTERS **************//
     public void setCodigo(double codigo) {
         this.codigo = codigo;
     }
